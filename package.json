@@ -1,0 +1,15 @@
+{
+  "name": "symbols-list",
+  "main": "./lib/symbols-list",
+  "version": "1.0.0",
+  "description": "Alternate symbol sidebar for Atom.io",
+  "keywords": [ "symbol", "symbols-list", "sidebar" ],
+  "repository": "https://github.com/atom/symbols-list",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.0"
+  }
+}
