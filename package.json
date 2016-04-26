@@ -1,9 +1,13 @@
 {
   "name": "symbols-list",
   "main": "./lib/symbols-list",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Alternate symbol sidebar for Atom.io",
-  "keywords": [ "symbol", "symbols-list", "sidebar" ],
+  "keywords": [
+    "symbol",
+    "symbols-list",
+    "sidebar"
+  ],
   "repository": "https://github.com/7ute/symbols-list.git",
   "license": "MIT",
   "engines": {
