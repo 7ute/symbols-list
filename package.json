@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Alternate symbol sidebar for Atom.io",
   "keywords": [ "symbol", "symbols-list", "sidebar" ],
-  "repository": "https://github.com/atom/symbols-list",
+  "repository": "https://github.com/7ute/symbols-list.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
