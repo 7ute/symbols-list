@@ -1,5 +1,5 @@
 # symbols-list package
 
-A short description of your package.
+An alternative symbol list for Atom.io
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![Symbols List](https://raw.githubusercontent.com/7ute/symbols-list/master/package_screenshot.png)
