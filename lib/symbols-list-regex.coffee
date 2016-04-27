@@ -5,6 +5,7 @@ module.exports =
                 commentaire_html: /^[^\S\n]*<!-- !(.+)-->/gmi
                 structure: /^[^\S\n]*<(head|body|section)/gmi
                 entete: /^[^\S\n]*<h[1-9][^>]*>([^<]*)<\/h[1-9]>/gmi
+                anchor: /^[^\S\n]*<[^>]*id=["']+([\w]+)["'][^>]*>/gmi
             php:
                 regex:
                     commentaire: /^[^\S\n]*\/\/ !(.+)/gmi
