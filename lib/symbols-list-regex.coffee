@@ -11,7 +11,7 @@ module.exports =
                     commentaire: /^[^\S\n]*\/\/ !(.+)/gmi
                     commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
                     class: /^[^\S\n]*class ([\w]+)/gmi
-                    function: /^[^\S\n]*(?:final|static|abstract|private|public)*\s*function ([\w]+\(.*\))/gmi
+                    function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+\(.*\))/gmi
 
     source:
         css:
@@ -22,7 +22,7 @@ module.exports =
                 commentaire: /^\h*\/\/ !(.+)/gmi
                 commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
                 class: /^[^\S\n]*class ([\w]+)/gmi
-                function: /^[^\S\n]*(?:final|static|abstract|private|public)*\s*function ([\w]+\(.*\))/gmi
+                function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+\(.*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*[^\s]*\.([\w]*)\s*=\s*function/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
