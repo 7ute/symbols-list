@@ -25,6 +25,7 @@ module.exports =
                 function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+\(.*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*[^\s]*\.([\w]*)\s*=\s*function/gmi
+                es6method: /^[^\S\n]*([\w]+\(.*\))[\s\n]*{/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
