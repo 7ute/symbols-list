@@ -8,7 +8,7 @@ module.exports =
                 anchor: /^[^\S\n]*<[^>]*id=["']+([\w]+)["'][^>]*>/gmi
             php:
                 regex:
-                    commentaire: /^[^\S\n]*\/\/ !(.+)/gmi
+                    commentaire: /^[^\S\n]*(?:\/\/|#)\s+(.+)/gmi
                     commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+\(.*\))/gmi
