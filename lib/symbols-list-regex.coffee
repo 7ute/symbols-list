@@ -34,3 +34,6 @@ module.exports =
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*\([^\)]*\)\s*->/gmi
                 class: /^[\S\n]*class ([\w]+)/gmi
+        ini:
+            regex:
+                structure: /^\[([^\]]+)]/gmi 
