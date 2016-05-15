@@ -12,6 +12,10 @@ module.exports =
         callOnConfirm: null
         cancelling: true
 
+        initialize: ->
+            super
+
+            @filterEditorView.getModel().placeholderText = 'Search…'
 
         viewForItem: (item) ->
             "<li class='full-menu list-tree'>" +
@@ -41,8 +45,8 @@ module.exports =
                 @items.sort (a, b) ->
                     a.label.localeCompare(b.label)
             else
-            @items.sort (a, b) ->
-                a.range?.start.row - b.range?.start.row
+                @items.sort (a, b) ->
+                    a.range?.start.row - b.range?.start.row
             @setItems(@items)
 
         serialize: ->
