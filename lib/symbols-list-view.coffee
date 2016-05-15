@@ -10,6 +10,8 @@ module.exports =
 
         items: []
         callOnConfirm: null
+        cancelling: true
+
 
         viewForItem: (item) ->
             "<li class='full-menu list-tree'>" +
@@ -24,6 +26,9 @@ module.exports =
         cleanItems: () ->
             @items = []
             @setItems(@items)
+
+        cancel: ->
+            @cleanItems()
 
         getFilterKey: () -> "label"
 
