@@ -8,6 +8,10 @@ module.exports =
             type: 'boolean'
             default: true
             description: 'Set panel visibility at startup.'
+        alphabecticalSorting:
+            type: 'boolean'
+            default: false
+            description: 'Sort the list alphabetically'
 
     SymbolsListView: null,
     panel: null,
