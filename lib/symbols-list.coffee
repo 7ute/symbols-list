@@ -86,3 +86,4 @@ module.exports =
             @panel.hide()
         else
             @panel.show()
+            @reloadSymbols()
