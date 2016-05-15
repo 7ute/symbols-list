@@ -1,3 +1,7 @@
+## 2.1.3 - More Regexes
+* Altered function regex for PHP
+* Added regex for INI
+
 ## 2.1.2 - Search and sort
 * Bugfix: symbols missing on search field blur
 * Added search field placeholder
