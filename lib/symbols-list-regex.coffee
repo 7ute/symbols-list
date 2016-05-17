@@ -2,25 +2,25 @@ module.exports =
     text:
         html:
             regex:
-                commentaire_html: /^[^\S\n]*<!-- !(.+)-->/gmi
+                commentaire_html: /^[^\S\n]*<!-- ! (.+)-->/gmi
                 structure: /^[^\S\n]*<(head|body|section)/gmi
                 entete: /^[^\S\n]*<h[1-9][^>]*>([^<]*)<\/h[1-9]>/gmi
                 anchor: /^[^\S\n]*<[^>]*id=["']+([\w]+)["'][^>]*>/gmi
             php:
                 regex:
-                    commentaire: /^[^\S\n]*(?:\/\/|#)\s+(.+)/gmi
-                    commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
+                    commentaire: /^[^\S\n]*(?:\/\/|#) ! (.+)/gmi
+                    commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+ *\(.*\))/gmi
 
     source:
         css:
             regex:
-                commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
+                commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
         js:
             regex:
-                commentaire: /^\h*\/\/ !(.+)/gmi
-                commentaire_multi: /^[^\S\n]*\/\* !(.+)\*\//gmi
+                commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
+                commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+ *\(.*\))/gmi
@@ -36,4 +36,4 @@ module.exports =
                 class: /^[\S\n]*class ([\w]+)/gmi
         ini:
             regex:
-                structure: /^\[([^\]]+)]/gmi 
+                structure: /^\[([^\]]+)]/gmi
