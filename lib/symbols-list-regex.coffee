@@ -25,7 +25,7 @@ module.exports =
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+ *\(.*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
-                method: /^[^\S\n]*[^\s]*\.([\w]*)\s*=\s*function/gmi
+                method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
                 es6method: /^[^\S\n]*(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
