@@ -1,3 +1,7 @@
+## 2.1.4 - Regex and fix
+* Altered JS method regex
+* Fixed: [php: comment added to list](https://github.com/7ute/symbols-list/issues/7)
+
 ## 2.1.3 - More Regexes
 * Altered function regex for PHP
 * Added regex for INI
