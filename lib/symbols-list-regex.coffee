@@ -37,3 +37,8 @@ module.exports =
         ini:
             regex:
                 structure: /^\[([^\]]+)]/gmi
+        python:
+            regex:
+                commentaire: /^[^\S\n]*# ! (.+)/gmi
+                class: /^[^\S\n]*class ([\w]+):/gmi
+                function: /^[^\S\n]*def ([\w]+ *\(.*\)):/gmi
