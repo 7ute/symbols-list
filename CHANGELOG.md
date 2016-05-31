@@ -1,3 +1,11 @@
+## 2.2 - Python and bugfixes
+* Added Python regex, courtesy of @firejdl
+* Altered PHP regex to add static methods
+* Altered PHP and JS multiline comments regex
+* Added toggle shortcut for Windows and Linux
+* Fixed: [php: jump to lines above function](https://github.com/7ute/symbols-list/issues/8)
+* Fixed: [php: methods with & prefix not being listed](https://github.com/7ute/symbols-list/issues/9)
+
 ## 2.1.4 - Regex and fix
 * Altered JS method regex
 * Fixed: [php: comment added to list](https://github.com/7ute/symbols-list/issues/7)
