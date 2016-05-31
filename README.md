@@ -15,7 +15,6 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Add the choice of active keyword per language in the settings
 * Add sidebar resizing
 * Add more languages/symbols :
-  * python
   * ruby
   * shell
   * java
