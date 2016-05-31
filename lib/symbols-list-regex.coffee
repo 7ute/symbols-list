@@ -9,7 +9,7 @@ module.exports =
             php:
                 regex:
                     commentaire: /^[^\S\n]*(?:\/\/|#) ! (.+)/gmi
-                    commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
+                    commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     methode_statique: /^(?:final|abstract|private|public|[^\S\n])*static\sfunction\s*((?:&\s?)?[\w]+ *\(.*\))/gmi
                     function: /^(?:final|abstract|private|public|[^\S\n])*function\s*((?:&\s?)?[\w]+ *\(.*\))/gmi
@@ -21,7 +21,7 @@ module.exports =
         js:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
-                commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
+                commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+ *\(.*\))/gmi
