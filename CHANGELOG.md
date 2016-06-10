@@ -1,3 +1,9 @@
+## 2.3 - Ruby and bugfixes
+* Added Ruby regex, courtesy of @aidistan
+* Added protected functions
+* Fixed jump to line above function for JS
+* Fixed function declaration with multiline arguments
+
 ## 2.2 - Python and bugfixes
 * Added Python regex, courtesy of @firejdl
 * Altered PHP regex to add static methods

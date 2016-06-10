@@ -10,12 +10,13 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 
 ## Settings
 * `Start Up` Set panel visibility at startup
+* `Alphabetical Sorting` Sorts the symbols alphabetically
 
 ## TO DO
 * Add the choice of active keyword per language in the settings
 * Add sidebar resizing
 * Add more languages/symbols :
-  * ruby
   * shell
   * java
+  * swift
   * …
