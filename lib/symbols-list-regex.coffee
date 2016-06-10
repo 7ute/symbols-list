@@ -43,3 +43,9 @@ module.exports =
                 commentaire: /^[^\S\n]*# ! (.+)/gmi
                 class: /^[^\S\n]*class ([\w]+):/gmi
                 function: /^[^\S\n]*def ([\w]+ *\(.*\)):/gmi
+        ruby:
+            regex:
+                attr: /^[^\S\n]*(?:attr_reader|attr_writer|attr_accessor) ([\w:]+)/gmi
+                class: /^[^\S\n]*class ([\w:]+)/gmi
+                module: /^[^\S\n]*module ([\w:]+)/gmi
+                method: /^[^\S\n]*def ([\w]+ *(\(.*\))?)/gmi
