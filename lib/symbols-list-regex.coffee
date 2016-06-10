@@ -11,8 +11,8 @@ module.exports =
                     commentaire: /^[^\S\n]*(?:\/\/|#) ! (.+)/gmi
                     commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                     class: /^[^\S\n]*class ([\w]+)/gmi
-                    methode_statique: /^(?:final|abstract|private|public|[^\S\n])*static\sfunction\s*((?:&\s?)?[\w]+ *\(.*\))/gmi
-                    function: /^(?:final|abstract|private|public|[^\S\n])*function\s*((?:&\s?)?[\w]+ *\(.*\))/gmi
+                    methode_statique: /^(?:final|abstract|private|protected|public|[^\S\n])*static\sfunction\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    function: /^(?:final|abstract|private|protected|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
 
     source:
         css:
@@ -24,7 +24,7 @@ module.exports =
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
-                function: /^[^\S\n]*(?:final|static|abstract|private|public|\s)*\s*function ([\w]+ *\(.*\))/gmi
+                function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
                 es6method: /^[^\S\n]*(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
