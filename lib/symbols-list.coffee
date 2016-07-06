@@ -32,6 +32,9 @@ module.exports =
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidSave ->
                 SymbolsList.reloadSymbols()
+        @subscriptions.add atom.workspace.observeTextEditors (editor) =>
+            editor.onDidChangeCursorPosition (e) ->
+                SymbolsList.updateActiveItem(e)
         @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: atom.config.get('symbols-list.startUp'), priority: 0)
 
     reloadSymbols: ->
@@ -56,6 +59,18 @@ module.exports =
                     SymbolsList.SymbolsListView.sortItems()
                     SymbolsList.SymbolsListView.loadingArea.hide()
                 ,0)
+
+    updateActiveItem: ( e )->
+        if e.oldBufferPosition.row == e.newBufferPosition.row
+            return
+
+        for key,item of @SymbolsListView.items
+            if e.newBufferPosition.row < item.range.start.row
+                continue;
+            if (parseInt(key)+1) < @SymbolsListView.items.length && e.newBufferPosition.row >= @SymbolsListView.items[parseInt(key)+1].range.start.row
+                continue;
+
+            @SymbolsListView.selectItemView( @SymbolsListView.list.find('li').eq( key ) )
 
     recursiveScanRegex: ( scopeArray, regexGroup )->
         for key,val of regexGroup
