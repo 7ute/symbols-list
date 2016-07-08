@@ -61,6 +61,8 @@ module.exports =
                 ,0)
 
     updateActiveItem: ( e )->
+        if atom.config.get('symbols-list.alphabecticalSorting')
+            return
         if e.oldBufferPosition.row == e.newBufferPosition.row
             return
 
