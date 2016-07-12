@@ -8,6 +8,16 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 
 ![Symbols List](https://raw.githubusercontent.com/7ute/symbols-list/master/package_screenshot.png)
 
+## Currently supported languages / source format
+* HTML ( text.html )
+* PHP ( text.html.php )
+* CSS ( source.css )
+* JS ( source.js )
+* CoffeeScript ( source.coffee )
+* Python( source.python )
+* Ruby( source.ruby )
+* INI/conf ( source.ini )
+
 ## Settings
 * `Start Up` Set panel visibility at startup
 * `Alphabetical Sorting` Sorts the symbols alphabetically
