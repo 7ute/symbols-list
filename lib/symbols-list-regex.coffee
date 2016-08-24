@@ -1,3 +1,6 @@
+# TO TEST REGEX
+# https://regexper.com/
+
 module.exports =
     text:
         html:
@@ -28,6 +31,7 @@ module.exports =
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
                 es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:async[\s\n]+)?(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
+                es6constfunction: /^[\s]*(?:export[\s]+)?const[\s]+([\w]+)[\s]+=[\s]+\(.*\)[\s]+=>/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
