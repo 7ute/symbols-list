@@ -1,3 +1,8 @@
+
+## 2.3.1 - Position highlight and ES2016 tweak
+* Added cursor position highlight, courtesy of @JeroenOnstuimig
+* Added ES6 method and const function regexes, courtesy of @wooandoo
+
 ## 2.3 - Ruby and bugfixes
 * Added Ruby regex, courtesy of @aidistan
 * Added protected functions
