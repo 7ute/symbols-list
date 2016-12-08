@@ -54,3 +54,6 @@ module.exports =
                 class: /^[^\S\n]*class ([\w:]+)/gmi
                 module: /^[^\S\n]*module ([\w:]+)/gmi
                 method: /^[^\S\n]*def ([\w]+ *(\(.*\))?)/gmi
+        gfm:
+            regex:
+                structure: /^#+[^\S\n]+(.+)/gmi
