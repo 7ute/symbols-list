@@ -1,7 +1,7 @@
 {
   "name": "symbols-list",
   "main": "./lib/symbols-list",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Alternate symbol sidebar for Atom.io",
   "keywords": [
     "symbol",
