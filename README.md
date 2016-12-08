@@ -17,6 +17,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Python( source.python )
 * Ruby( source.ruby )
 * INI/conf ( source.ini )
+* Github Markdown ( source.gfm )
 
 ## Settings
 * `Start Up` Set panel visibility at startup
@@ -28,4 +29,5 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
   * shell
   * java
   * swift
+  * typescript
   * …
