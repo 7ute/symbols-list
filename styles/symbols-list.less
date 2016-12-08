@@ -3,10 +3,22 @@
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
 @import "ui-variables";
-
 .symbols-list {
     width: 200px;
+
+    // To get rid of a number i can't figure where it comes from…
+    color: transparent;
 }
+
+    .symbols-list .panel-resize-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        cursor: col-resize;
+        z-index: 3;
+    }
+
     .symbols-list atom-text-editor[mini],
     .symbols-list atom-text-editor[mini].is-focused,{
         height: 33px;
