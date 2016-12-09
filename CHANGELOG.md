@@ -1,4 +1,4 @@
-## 2.3.2 - Bugfixes
+## 2.3.3 - Bugfixes
 * List height bugfix
 
 ## 2.3.2 - Resizing and moar Python
