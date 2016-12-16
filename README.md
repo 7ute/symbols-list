@@ -18,6 +18,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Ruby( source.ruby )
 * INI/conf ( source.ini )
 * Github Markdown ( source.gfm )
+* C# ( source.cs )
 
 ## Settings
 * `Start Up` Set panel visibility at startup

@@ -1,3 +1,6 @@
+## 2.3.4 - Basics for C#
+* Added regex for C#
+
 ## 2.3.3 - Bugfixes
 * List height bugfix
 
