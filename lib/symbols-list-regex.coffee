@@ -42,7 +42,7 @@ module.exports =
         cs:
             regex:
                 class: /^[\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\s?class\s([\w]+(\s?:\s?[\w]*)?)/gmi
-                function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\n?(?:[\w])+\s?([\w]+\s*\([^\)]*\))[\s\n]+{/gmi
+                function: /^[^\S\n]*(?:final|static|abstract|private|protected|public)*\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
         ini:
             regex:
                 structure: /^\[([^\]]+)]/gmi

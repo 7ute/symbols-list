@@ -1,3 +1,6 @@
+## 2.3.5 - Bugfixes for C#
+* Quick adjustement on C# regex to avoid control structures matching
+
 ## 2.3.4 - Basics for C#
 * Added regex for C#
 

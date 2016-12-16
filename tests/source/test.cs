@@ -12,5 +12,9 @@ public class ClassName : ParentClass {
     IEnumerator AnotherMethod()
     {
         some_function();
+        if(int 1 == 1)
+        {
+            some_other_function();
+        }
     }
 }
