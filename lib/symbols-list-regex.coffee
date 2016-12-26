@@ -21,6 +21,7 @@ module.exports =
         css:
             regex:
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
+                class: /^"([#|\.]*.+)"/gmi
         js:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
