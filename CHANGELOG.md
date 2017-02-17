@@ -1,3 +1,6 @@
+## 2.3.6 - YAML
+* Added YAML comments regex ( line starting with # ! )
+
 ## 2.3.5 - Bugfixes for C#
 * Quick adjustement on C# regex to avoid control structures matching
 
