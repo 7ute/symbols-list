@@ -61,3 +61,6 @@ module.exports =
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
+        yaml:
+            regex:
+                commentaire: /^[^\S\n]*# ! (.+)/gmi
