@@ -61,3 +61,9 @@ module.exports =
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
+        perl:
+            regex:
+                package: /^package[ ]+([^\d].+?);/gmi
+                use: /^use[ ]+([^\d].+?)\;/gmi
+                our: /^our[ ]+([^\d].+?)[ ]/gmi
+                subroutine: /^sub[ ]+([^\d].+?)[ ]*\{/gmi
