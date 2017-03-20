@@ -64,3 +64,9 @@ module.exports =
         yaml:
             regex:
                 commentaire: /^[^\S\n]*# ! (.+)/gmi
+        perl:
+            regex:
+                package: /^package[ ]+([^\d].+?);/gmi
+                use: /^use[ ]+([^\d].+?)\;/gmi
+                our: /^our[ ]+([^\d].+?)[ ]/gmi
+                subroutine: /^sub[ ]+([^\d].+?)[ ]*\{/gmi
