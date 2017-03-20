@@ -49,9 +49,9 @@ module.exports =
         python:
             regex:
                 commentaire: /^[^\S\n]*# ! (.+)/gmi
-                class: /^[^\S\n]*class[\W]+([\w]+)(:| *\([\w\s.,]*\):)/gmi
-                function: /^[^\S\n]*def +([\w]+ *\((?!\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
-                method: /^[^\S\n]*def +([\w]+ *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
+                class: /^[^\S\n]*class[\W]+(.+?)(:| *\([\w\s.,]*\):)/gmi
+                function: /^[^\S\n]*def +(.+? *\((?!\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
+                method: /^[^\S\n]*def +(.+? *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
         ruby:
             regex:
                 attr: /^[^\S\n]*(?:attr_reader|attr_writer|attr_accessor) ([\w:]+)/gmi

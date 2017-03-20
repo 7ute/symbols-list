@@ -41,9 +41,11 @@ class Class4(object):
             self, param1, param2):
         pass
 
-    class Class4Nested(object):
+    def class_method_unicode_Σ(self, param1):
         pass
 
+    class Class4Nested(object):
+        pass
 
 class Class5(re.RegexObject):
     pass
@@ -51,6 +53,10 @@ class Class5(re.RegexObject):
 
 class Class6Multiline(Class3,
                       Class4):
+    pass
+
+
+class Class7UnicodeΣ(object):
     pass
 
 
@@ -65,10 +71,8 @@ def function2(param1, param2=Class3('%^$#'), param3=-4/2.0*3+1, param4='4', para
 
     pass
 
-
 def function3(*args, **kwargs):
     return datetime(2000, 1, 1)
-
 
 def function4_multi_line(
         param1, param2):
@@ -81,4 +85,8 @@ def function5_multi_line(param1,
 
 
 def function6_not_method(self_test):
+    pass
+
+
+def function_unicode_Σ(param1):
     pass
