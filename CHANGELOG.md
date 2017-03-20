@@ -1,4 +1,6 @@
-## 2.3.6 - YAML
+## 2.3.6 - Perl, YAML and performances
+* First trial at fixing [Performance with large files](https://github.com/7ute/symbols-list/issues/36)
+* Added Perl regex, courtesy of @mbuc82
 * Added YAML comments regex ( line starting with # ! )
 
 ## 2.3.5 - Bugfixes for C#
