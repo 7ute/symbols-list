@@ -38,7 +38,6 @@ module.exports =
         @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: atom.config.get('symbols-list.startUp'), priority: 0)
 
     reloadSymbols: ->
-        console.log(@editor,atom.workspace )
         @editor = atom.workspace.getActiveTextEditor()
         parent = @SymbolsListView
         @SymbolsListView.cleanItems()
@@ -55,7 +54,7 @@ module.exports =
                 # Async loading
                 setTimeout(->
                     SymbolsList.SymbolsListView.cleanItems()
-                    SymbolsList.recursiveScanRegex(scopeArray, RegexList )
+                    SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
                     SymbolsList.SymbolsListView.sortItems()
                     SymbolsList.SymbolsListView.loadingArea.hide()
                 ,0)
@@ -74,16 +73,19 @@ module.exports =
 
             @SymbolsListView.selectItemView( @SymbolsListView.list.find('li').eq( key ) )
 
-    recursiveScanRegex: ( scopeArray, regexGroup )->
-        for key,val of regexGroup
-            if key == 'regex'
-                for type,regex of val
-                    if not @editor?
-                        return;
-                    @editor.scan regex, (obj) =>
-                        @SymbolsListView.addItem({ type:type, label: obj.match[1], objet: obj.match, range: obj.range })
-            else if key == scopeArray[0]
-                @recursiveScanRegex( scopeArray.slice(1), val )
+    recursiveScanRegex: ( scopeArray, regexGroup, start )->
+            current = window.performance.now()
+            recursive_time_limit = 500.0
+            for key,val of regexGroup
+                if key == 'regex'
+                    for type,regex of val
+                        current = window.performance.now()
+                        if not @editor? || current - start > recursive_time_limit
+                            return;
+                        @editor.scan regex, (obj) =>
+                            @SymbolsListView.addItem({ type:type, label: obj.match[1], objet: obj.match, range: obj.range })
+                else if key == scopeArray[0] && current - start < recursive_time_limit
+                    @recursiveScanRegex( scopeArray.slice(1), val, start )
 
     moveToRange:(range) ->
         @editor = atom.workspace.getActiveTextEditor()
