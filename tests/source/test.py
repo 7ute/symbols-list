@@ -90,3 +90,7 @@ def function6_not_method(self_test):
 
 def function_unicode_Σ(param1):
     pass
+
+
+def test_unicode_θ():
+    pass
