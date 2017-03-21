@@ -1,3 +1,12 @@
+## dev
+* Added new config option to hide panel on empty list.
+* Hide panel in settings view.
+* Added initial symbols reload to have the list on atom load.
+* Changed Perl color of our-statements to blue (instead of signal color red).
+* Improved Perl source regex strings.
+* Improved CoffeeScript source regex strings.
+* Improved Python source regex strings, to support unicode characters.
+
 ## 2.3.6 - Perl, YAML and performances
 * First trial at fixing [Performance with large files](https://github.com/7ute/symbols-list/issues/36)
 * Added Perl regex, courtesy of @mbuc82
