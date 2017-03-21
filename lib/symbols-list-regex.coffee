@@ -35,6 +35,8 @@ module.exports =
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
+                setter: /^[ ]*set[ ]+([^ (]+\(.*\))/gmi
+                getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi

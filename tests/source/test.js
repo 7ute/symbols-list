@@ -10,3 +10,10 @@ $scope.method = function(){};
 .filter('filter', function(){});
 .config(function(){});
 .run(function(){});
+
+class SomeClass {
+    set foo(value) {}
+    get foo() {}
+    set bar( value ) {}
+    get bar() {}
+}
