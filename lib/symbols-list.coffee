@@ -85,7 +85,7 @@ module.exports =
                         CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
                         SymbolsList.updateActiveItem(CursorBufferPosition)
                     else
-                        if SymbolsList.panel.isVisible() && atom.config.get('symbols-list.hideOnEmptyList')
+                        if atom.config.get('symbols-list.hideOnEmptyList')
                             SymbolsList.panel.hide()
                         else
                             SymbolsList.panel.show()
