@@ -8,10 +8,14 @@ module.exports =
             type: 'boolean'
             default: true
             description: 'Set panel visibility at startup.'
-        alphabecticalSorting:
+        alphabeticalSorting:
             type: 'boolean'
             default: false
             description: 'Sort the list alphabetically'
+        hideOnEmptyList:
+            type: 'boolean'
+            default: false
+            description: 'Hide the list if empty'
 
     SymbolsListView: null,
     panel: null,
@@ -23,9 +27,13 @@ module.exports =
 
 
     activate: (state) ->
+
+        # prepare symbols list view object
         @SymbolsListView = new SymbolsListView(state.SymbolsListViewState)
         @SymbolsListView.callOnConfirm = @moveToRange;
         SymbolsList = this
+
+        # add event handlers
         @subscriptions = new CompositeDisposable
         @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:toggle': => @toggle()
         @subscriptions.add atom.workspace.onDidChangeActivePaneItem => @reloadSymbols()
@@ -35,7 +43,12 @@ module.exports =
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidChangeCursorPosition (e) ->
                 SymbolsList.updateActiveItem(e)
+
+        # setup symbols list on right panel
         @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: atom.config.get('symbols-list.startUp'), priority: 0)
+
+        # reload symbols for the very first time
+        SymbolsList.reloadSymbols()
 
     reloadSymbols: ->
         @editor = atom.workspace.getActiveTextEditor()
@@ -51,16 +64,31 @@ module.exports =
                 scopeArray = scopeName.split('.');
                 SymbolsList = this
                 @SymbolsListView.setLoading('Loading…')
+
                 # Async loading
                 setTimeout(->
                     SymbolsList.SymbolsListView.cleanItems()
                     SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
-                    SymbolsList.SymbolsListView.sortItems()
-                    SymbolsList.SymbolsListView.loadingArea.hide()
+
+                    # check list for item count and hide it if needed
+                    if SymbolsList.SymbolsListView.items.length
+                        SymbolsList.panel.show()
+                        SymbolsList.SymbolsListView.sortItems()
+                        SymbolsList.SymbolsListView.loadingArea.hide()
+                    else
+                        if SymbolsList.panel.isVisible() && atom.config.get('symbols-list.hideOnEmptyList')
+                            SymbolsList.panel.hide()
+                        else
+                            SymbolsList.panel.show()
+                            SymbolsList.SymbolsListView.sortItems()
+                            SymbolsList.SymbolsListView.loadingArea.hide()
                 ,0)
+        else
+            if this.panel.isVisible()
+                this.panel.hide()
 
     updateActiveItem: ( e )->
-        if atom.config.get('symbols-list.alphabecticalSorting')
+        if atom.config.get('symbols-list.alphabeticalSorting')
             return
         if e.oldBufferPosition.row == e.newBufferPosition.row
             return

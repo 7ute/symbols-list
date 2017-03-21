@@ -37,7 +37,7 @@ module.exports =
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
         coffee:
             regex:
-                function: /^[^\S\n]*([\w]+:)\s*\([^\)]*\)\s*->/gmi
+                function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
                 class: /^[\S\n]*class ([\w]+)/gmi
         cs:
             regex:
