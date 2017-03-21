@@ -57,46 +57,48 @@ module.exports =
         # check if we face a text editor to reload the list for
         @editor = atom.workspace.getActiveTextEditor()
 
-        if @editor? && @editor.getGrammar()?
-            scopeName = @editor.getGrammar().scopeName
-
-            if scopeName?
-
-                console.log('Scope:',scopeName)
-                scopeArray = scopeName.split('.');
-
-                SymbolsList = this
-                @SymbolsListView.setLoading('Loading…')
-
-                # asynchronous loading
-                setTimeout(->
-                    SymbolsList.SymbolsListView.cleanItems()
-                    SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
-
-                    # check list for item count and hide it if needed
-                    if SymbolsList.SymbolsListView.items.length
-
-                        # show panel, re-sort items and hide the loader afterwards
-                        SymbolsList.panel.show()
-                        SymbolsList.SymbolsListView.sortItems()
-                        SymbolsList.SymbolsListView.loadingArea.hide()
-
-                        # determine currently active line and update active item
-                        CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
-                        SymbolsList.updateActiveItem(CursorBufferPosition)
-                    else
-                        if atom.config.get('symbols-list.hideOnEmptyList')
-                            SymbolsList.panel.hide()
-                        else
-                            SymbolsList.panel.show()
-                            SymbolsList.SymbolsListView.sortItems()
-                            SymbolsList.SymbolsListView.loadingArea.hide()
-                ,0)
+        SymbolsList = this
 
         # hide the list without an available text editor (i.e. in settings view)
-        else
-            if this.panel.isVisible()
-                this.panel.hide()
+        if not @editor? || not @editor.getGrammar()?
+            SymbolsList.panel.hide()
+            return
+
+        scopeName = @editor.getGrammar().scopeName
+
+        if not scopeName?
+            SymbolsList.panel.hide()
+            return
+
+        console.log('Scope:',scopeName)
+        scopeArray = scopeName.split('.');
+
+        # asynchronous loading
+        @SymbolsListView.setLoading('Loading…')
+
+        setTimeout(->
+            SymbolsList.SymbolsListView.cleanItems()
+            SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
+
+            # check list for item count and hide it if needed
+            if SymbolsList.SymbolsListView.items.length
+
+                # show panel, re-sort items and hide the loader afterwards
+                SymbolsList.panel.show()
+                SymbolsList.SymbolsListView.sortItems()
+                SymbolsList.SymbolsListView.loadingArea.hide()
+
+                # determine currently active line and update active item
+                CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
+                SymbolsList.updateActiveItem(CursorBufferPosition)
+            else
+                if atom.config.get('symbols-list.hideOnEmptyList')
+                    SymbolsList.panel.hide()
+                else
+                    SymbolsList.panel.show()
+                    SymbolsList.SymbolsListView.sortItems()
+                    SymbolsList.SymbolsListView.loadingArea.hide()
+        ,0)
 
     updateActiveItem: (e) ->
 
