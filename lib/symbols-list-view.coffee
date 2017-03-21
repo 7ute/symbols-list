@@ -68,7 +68,7 @@ module.exports =
             @setItems(@items)
 
         sortItems: () ->
-            if atom.config.get('symbols-list.alphabecticalSorting')
+            if atom.config.get('symbols-list.alphabeticalSorting')
                 @items.sort (a, b) ->
                     a.label.localeCompare(b.label)
             else
