@@ -25,7 +25,6 @@ module.exports =
 
     init: (service) ->
 
-
     activate: (state) ->
 
         # prepare symbols list view object
@@ -40,7 +39,6 @@ module.exports =
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidSave ->
                 SymbolsList.reloadSymbols()
-        @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidChangeCursorPosition (e) ->
                 SymbolsList.updateActiveItem(e)
 
@@ -51,30 +49,41 @@ module.exports =
         SymbolsList.reloadSymbols()
 
     reloadSymbols: ->
-        @editor = atom.workspace.getActiveTextEditor()
-        parent = @SymbolsListView
-        @SymbolsListView.cleanItems()
 
+        # prepare symbols list view for reload
+        @SymbolsListView.cleanItems()
         @SymbolsListView.setError()
 
-        if @editor? and @editor.getGrammar()?
+        # check if we face a text editor to reload the list for
+        @editor = atom.workspace.getActiveTextEditor()
+
+        if @editor? && @editor.getGrammar()?
             scopeName = @editor.getGrammar().scopeName
+
             if scopeName?
+
                 console.log('Scope:',scopeName)
                 scopeArray = scopeName.split('.');
+
                 SymbolsList = this
                 @SymbolsListView.setLoading('Loading…')
 
-                # Async loading
+                # asynchronous loading
                 setTimeout(->
                     SymbolsList.SymbolsListView.cleanItems()
                     SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
 
                     # check list for item count and hide it if needed
                     if SymbolsList.SymbolsListView.items.length
+
+                        # show panel, re-sort items and hide the loader afterwards
                         SymbolsList.panel.show()
                         SymbolsList.SymbolsListView.sortItems()
                         SymbolsList.SymbolsListView.loadingArea.hide()
+
+                        # determine currently active line and update active item
+                        CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
+                        SymbolsList.updateActiveItem(CursorBufferPosition)
                     else
                         if SymbolsList.panel.isVisible() && atom.config.get('symbols-list.hideOnEmptyList')
                             SymbolsList.panel.hide()
@@ -83,25 +92,35 @@ module.exports =
                             SymbolsList.SymbolsListView.sortItems()
                             SymbolsList.SymbolsListView.loadingArea.hide()
                 ,0)
+
+        # hide the list without an available text editor (i.e. in settings view)
         else
             if this.panel.isVisible()
                 this.panel.hide()
 
-    updateActiveItem: ( e )->
+    updateActiveItem: (e) ->
+
+        # TODO: currently no active item updates on alphabetical sorting
         if atom.config.get('symbols-list.alphabeticalSorting')
             return
-        if e.oldBufferPosition.row == e.newBufferPosition.row
-            return
+
+        if e.row?
+            ActiveRow = e.row
+        else if e.newBufferPosition.row?
+            if e.oldBufferPosition.row == e.newBufferPosition.row
+                return
+            else
+                ActiveRow = e.newBufferPosition.row
 
         for key,item of @SymbolsListView.items
-            if e.newBufferPosition.row < item.range.start.row
+            if ActiveRow < item.range.start.row
                 continue;
-            if (parseInt(key)+1) < @SymbolsListView.items.length && e.newBufferPosition.row >= @SymbolsListView.items[parseInt(key)+1].range.start.row
+            if (parseInt(key)+1) < @SymbolsListView.items.length && ActiveRow >= @SymbolsListView.items[parseInt(key)+1].range.start.row
                 continue;
 
             @SymbolsListView.selectItemView( @SymbolsListView.list.find('li').eq( key ) )
 
-    recursiveScanRegex: ( scopeArray, regexGroup, start )->
+    recursiveScanRegex: ( scopeArray, regexGroup, start ) ->
             current = window.performance.now()
             recursive_time_limit = 500.0
             for key,val of regexGroup
@@ -115,7 +134,7 @@ module.exports =
                 else if key == scopeArray[0] && current - start < recursive_time_limit
                     @recursiveScanRegex( scopeArray.slice(1), val, start )
 
-    moveToRange:(range) ->
+    moveToRange: (range) ->
         @editor = atom.workspace.getActiveTextEditor()
         @editor.setCursorBufferPosition(range.start)
         @editor.scrollToCursorPosition({center: false})
