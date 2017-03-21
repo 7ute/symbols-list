@@ -1,17 +1,10 @@
-package My::Test::Package1;
+#!/usr/bin/perl
 
 use strict;
 use warnings;
-use utf8;
-use Test::Module::Usage qw(:all);
 
-my $Version = 0.9;
-
-package My::Test::Package2 {
-    $Version = 1.0;
-}
-
-package My::Test::::P&auml;ckage3;
+use Test::Module1;
+use Test::Module2::Usage qw(:all);
 
 our @ArrayToUse = (
     '1',
@@ -23,42 +16,7 @@ our $Test = 1;
 
 our $TestWithoutValue;
 
-=head1 NAME
-
-My::Test::Package - A test package
-
-=cut
-
-=item new()
-
-some descriptions about the constructor
-
-    test test test
-
-=cut
-
-sub new {
-    my ( $Type, %Param ) = @_;
-
-    my $Self = {};
-    bless( $Self, $Type );
-
-    return $Self;
-}
-
 sub _PrivateSubroutine {
-    my $Name = shift;
-
-    print "Hello, $Name!\n";
-}
-
-sub Full::Namespace::Subroutine {
-    my $Name = shift;
-
-    print "Hello, $Name!\n";
-}
-
-sub Full::Namespace::_PrivateSubroutine {
     my $Name = shift;
 
     my $Message = <<'END_MESSAGE';
@@ -82,6 +40,8 @@ sub OneLineSubroutine { return "Hello!\n"; }
 
 sub ReturningAnonymousSubroutine {
 
+    # some code
+
     return sub {
         print "Hello!\n";
     }
@@ -103,4 +63,4 @@ sub SubroutineWithAttributeAndParams :TestAttribute(TestParam) { return "Hello!\
     }
 }
 
-1;
+exit 0;

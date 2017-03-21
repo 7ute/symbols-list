@@ -66,7 +66,7 @@ module.exports =
                 commentaire: /^[^\S\n]*# ! (.+)/gmi
         perl:
             regex:
-                package: /^package[ ]+([^\d].+?);/gmi
-                use: /^use[ ]+([^\d].+?)\;/gmi
-                our: /^our[ ]+([^\d].+?)[ ]/gmi
-                subroutine: /^sub[ ]+([^\d].+?)[ ]*\{/gmi
+                package: /^[ ]*package[ ]+([^\d][^ ]+)[ ]*(?:\{|;)/gmi
+                use: /^[ ]*use[ ]+([^\d].+?);/gmi
+                our: /^[ ]*our[ ]+([^ \d]{2}[^\s\;\=]+)(?:[ ]*|=|;)/gmi
+                subroutine: /^[ ]*sub[ ]+([^\d][^ (]+)(?:[ ]+\:[^ (]+)?(?:\(.*\))?[ ]*\{/gmi
