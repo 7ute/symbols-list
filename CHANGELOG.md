@@ -1,4 +1,5 @@
 ## dev
+* Added support for css.tss, courtesy of @m1ga
 * Fixed misplaced number in list (not visible because of temporary transparency).
 * Fixed height of search filter field to avoid scrollbars.
 * Added new config option to hide panel on empty list.
