@@ -1,14 +1,18 @@
 ## dev
+* Improved regex strings for Ruby (Differ between class methods and instance methods).
+* Added todo and fixme symbols.
 * Added support for css.tss, courtesy of @m1ga
-* Fixed misplaced number in list (not visible because of temporary transparency).
-* Fixed height of search filter field to avoid scrollbars.
 * Added new config option to hide panel on empty list.
-* Hide panel in settings view.
 * Added initial symbols reload to have the list on atom load.
+* Hide panel in settings view.
 * Changed Perl color of our-statements to blue (instead of signal color red).
 * Improved Perl source regex strings.
 * Improved CoffeeScript source regex strings.
-* Improved Python source regex strings, to support unicode characters.
+* Improved Python source regex strings.
+* Fixed misplaced number in list (not visible because of temporary transparency).
+* Fixed height of search filter field to avoid scrollbars.
+* Fixed: [Ruby: self is not the name of all class methods](https://github.com/7ute/symbols-list/issues/26)
+* Fixed: [Unicode symbol not being recognized](https://github.com/7ute/symbols-list/issues/28)
 
 ## 2.3.6 - Perl, YAML and performances
 * First trial at fixing [Performance with large files](https://github.com/7ute/symbols-list/issues/36)
