@@ -4,6 +4,7 @@
 * Added support for css.tss, courtesy of @m1ga
 * Added new config option to hide panel on empty list.
 * Added initial symbols reload to have the list on atom load.
+* Added symbols for getters and setters in JavaScript.
 * Hide panel in settings view.
 * Changed Perl color of our-statements to blue (instead of signal color red).
 * Improved Perl source regex strings.
