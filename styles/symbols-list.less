@@ -27,11 +27,14 @@
     border: 0;
 }
 
-.symbols-list .editor-contents--private {
+.symbols-list .editor-contents--private{
     height: 33px !important;
     line-height: 33px;
 }
-.symbols-list .cursors .cursor{ height: 33px !important;}
+.symbols-list .cursors .cursor{
+    height: 16px !important;
+    top: 9px;
+}
 
 .symbols-list .error-message,
 .symbols-list .loading{
@@ -59,9 +62,10 @@
 }
 .symbols-list .list-group li:hover{
     color: @text-color-highlight;
+    background-color: fade(#4182C4, 20%);
     cursor: pointer;
 }
-.symbols-list span.pastille {
+.symbols-list span.pastille{
     position: relative;
     height: 14px;
     width: 14px;
@@ -71,8 +75,9 @@
     vertical-align: sub;
     border-radius: 2px;
     font-weight: bold;
+    border: 1px solid fade(#000, 25%);
 }
-.symbols-list span.pastille::before {
+.symbols-list span.pastille::before{
     position: absolute;
     top: 0;
     left: 0;
