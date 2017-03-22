@@ -86,6 +86,7 @@
     line-height: 12px;
     font-size: 10px;
 }
+
 .symbols-list .list-item-commentaire,
 .symbols-list .list-item-commentaire_multi,
 .symbols-list .list-item-commentaire_html{ background: #888 }
@@ -98,11 +99,15 @@
 .symbols-list .list-item-attr::before{ content: "A"; color: #FFF;}
 .symbols-list .list-item-filter{ background: #839595 }
 .symbols-list .list-item-filter::before{ content: "f"; color: #FFF;}
+.symbols-list .list-item-classmethod,
 .symbols-list .list-item-method,
 .symbols-list .list-item-es6method{ background: #823da2 }
 .symbols-list .list-item-es6constfunction{ background: #823da2 }
+.symbols-list .list-item-classmethod::before,
 .symbols-list .list-item-method::before,
 .symbols-list .list-item-es6constfunction::before{ content: "M"; color: #FFF;}
+.symbols-list .list-item-instancemethod{ background: #b15edb }
+.symbols-list .list-item-instancemethod::before{ content: "I"; color: #FFF;}
 .symbols-list .list-item-methode_statique{ background: #823da2 }
 .symbols-list .list-item-methode_statique::before{ content: "::"; color: #FFF;}
 .symbols-list .list-item-class,

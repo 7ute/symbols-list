@@ -2,6 +2,19 @@ attr_reader :readonly_attr
 attr_writer :writeonly_attr
 attr_accessor :attr
 
+class Foo
+
+    include SomeModule
+
+    def self.bar
+        puts 'class method'
+    end
+
+    def baz
+        puts 'instance method'
+    end
+end
+
 class TestClass
 end
 

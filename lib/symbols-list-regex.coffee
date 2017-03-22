@@ -57,10 +57,11 @@ module.exports =
                 method: /^[^\S\n]*def +(.+? *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
         ruby:
             regex:
-                attr: /^[^\S\n]*(?:attr_reader|attr_writer|attr_accessor) ([\w:]+)/gmi
-                class: /^[^\S\n]*class ([\w:]+)/gmi
-                module: /^[^\S\n]*module ([\w:]+)/gmi
-                method: /^[^\S\n]*def ([\w]+ *(\(.*\))?)/gmi
+                attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
+                class: /^[ ]*class[ ]+(?:.+?::)*([^ \n\r]+)/gmi
+                module: /^[ ]*module[ ]+([^ \n\r]+)/gmi
+                classmethod: /^[ ]*def[ ]+(?:self\.)([^ \n\r]+)/gmi
+                instancemethod: /^[ ]*def[ ]+(?!self\.)([^ \n\r]+)/gmi
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
