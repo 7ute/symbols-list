@@ -12,7 +12,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * HTML ( text.html )
 * PHP ( text.html.php )
 * CSS ( source.css )
-* TSS ( source css.tss )
+* TSS ( source.css.tss )
 * JS ( source.js )
 * CoffeeScript ( source.coffee )
 * Python( source.python )
