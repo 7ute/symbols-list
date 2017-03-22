@@ -13,11 +13,15 @@ package My::Test::Package2 {
 
 package My::Test::::P&auml;ckage3;
 
+# TODO: Heres an important todo entry!
+
 our @ArrayToUse = (
     '1',
     '2',
     '3',
 );
+
+# FIXME: A nasty workaround or bug, that needs to be fixed!
 
 our $Test = 1;
 

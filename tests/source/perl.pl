@@ -12,9 +12,13 @@ our @ArrayToUse = (
     '3',
 );
 
+# TODO: Heres an important todo entry!
+
 our $Test = 1;
 
 our $TestWithoutValue;
+
+# FIXME: A nasty workaround or bug, that needs to be fixed!
 
 sub _PrivateSubroutine {
     my $Name = shift;

@@ -87,12 +87,16 @@
     font-size: 10px;
 }
 
+.symbols-list .list-item-todo,
 .symbols-list .list-item-commentaire,
 .symbols-list .list-item-commentaire_multi,
 .symbols-list .list-item-commentaire_html{ background: #888 }
+.symbols-list .list-item-todo::before,
 .symbols-list .list-item-commentaire::before,
 .symbols-list .list-item-commentaire_multi::before,
 .symbols-list .list-item-commentaire_html::before{ content: "/"; color: #DDD;}
+.symbols-list .list-item-fixme{ background: #dd0000 }
+.symbols-list .list-item-fixme::before{ content: "!"; color: #FFF;}
 .symbols-list .list-item-function{ background: #3996e3 }
 .symbols-list .list-item-function::before{ content: "F"; color: #FFF;}
 .symbols-list .list-item-attr{ background: #3996e3 }

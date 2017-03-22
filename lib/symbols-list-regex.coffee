@@ -74,3 +74,5 @@ module.exports =
                 use: /^[ ]*use[ ]+([^\d].+?);/gmi
                 our: /^[ ]*our[ ]+([^ \d]{2}[^\s\;\=]+)(?:[ ]*|=|;)/gmi
                 subroutine: /^[ ]*sub[ ]+([^\d][^ (]+)(?:[ ]+\:[^ (]+)?(?:\(.*\))?[ ]*\{/gmi
+                todo: /todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
