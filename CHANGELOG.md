@@ -1,4 +1,6 @@
 ## dev
+* Fixed misplaced number in list (not visible because of temporary transparency).
+* Fixed height of search filter field to avoid scrollbars.
 * Added new config option to hide panel on empty list.
 * Hide panel in settings view.
 * Added initial symbols reload to have the list on atom load.
