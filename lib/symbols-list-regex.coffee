@@ -16,6 +16,8 @@ module.exports =
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     methode_statique: /^(?:final|abstract|private|protected|public|[^\S\n])*static\sfunction\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     function: /^(?:final|abstract|private|protected|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                    fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
 
     source:
         css:
@@ -38,10 +40,14 @@ module.exports =
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
                 setter: /^[ ]*set[ ]+([^ (]+\(.*\))/gmi
                 getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
+                todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
                 class: /^[\S\n]*class ([\w]+)/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         cs:
             regex:
                 class: /^[\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\s?class\s([\w]+(\s?:\s?[\w]*)?)/gmi
@@ -55,6 +61,8 @@ module.exports =
                 class: /^[^\S\n]*class[\W]+(.+?)(:| *\([\w\s.,]*\):)/gmi
                 function: /^[^\S\n]*def +(.+? *\((?!\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
                 method: /^[^\S\n]*def +(.+? *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         ruby:
             regex:
                 attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
@@ -62,6 +70,8 @@ module.exports =
                 module: /^[ ]*module[ ]+([^ \n\r]+)/gmi
                 classmethod: /^[ ]*def[ ]+(?:self\.)([^ \n\r]+)/gmi
                 instancemethod: /^[ ]*def[ ]+(?!self\.)([^ \n\r]+)/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
@@ -74,5 +84,5 @@ module.exports =
                 use: /^[ ]*use[ ]+([^\d].+?);/gmi
                 our: /^[ ]*our[ ]+([^ \d]{2}[^\s\;\=]+)(?:[ ]*|=|;)/gmi
                 subroutine: /^[ ]*sub[ ]+([^\d][^ (]+)(?:[ ]+\:[^ (]+)?(?:\(.*\))?[ ]*\{/gmi
-                todo: /todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                fixme: /fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
