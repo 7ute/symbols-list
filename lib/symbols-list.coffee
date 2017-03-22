@@ -70,7 +70,6 @@ module.exports =
             SymbolsList.panel.hide()
             return
 
-        console.log('Scope:',scopeName)
         scopeArray = scopeName.split('.');
 
         # asynchronous loading

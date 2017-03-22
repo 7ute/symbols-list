@@ -5,9 +5,6 @@
 @import "ui-variables";
 .symbols-list {
     width: 200px;
-
-    // To get rid of a number i can't figure where it comes from…
-    color: transparent;
 }
 
 .symbols-list .panel-resize-handle {
@@ -26,8 +23,11 @@
     box-shadow: none;
     border-radius: 0;
     font-family: inherit;
+    max-height: 33px;
+    border: 0;
 }
-.symbols-list .editor-contents--private{
+
+.symbols-list .editor-contents--private {
     height: 33px !important;
     line-height: 33px;
 }

@@ -5,14 +5,8 @@ module.exports =
     class SymbolsListView extends SelectListView
         @content: ->
             @div =>
-                #super
+                super
                 @div class: 'panel-resize-handle', outlet: 'resizeHandle'
-                @subview 'liste', super
-
-        constructor: (serializedState) ->
-            super
-            @addClass('symbols-list')
-            @setItems([])
 
         items: []
         callOnConfirm: null
@@ -41,7 +35,10 @@ module.exports =
         initialize: ->
             super
 
-            @filterEditorView.getModel().placeholderText = 'Search…'
+            @addClass('symbols-list')
+            @setItems([])
+
+            @filterEditorView.getModel().placeholderText = 'Start typing to filter...'
             @handleEvents()
 
         viewForItem: (item) ->
