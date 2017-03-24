@@ -1,4 +1,6 @@
 ## dev
+
+## 2.4 - Lots of improvements!
 * Improved regex strings for Ruby (Differ between class methods and instance methods).
 * Added todo,fixme and hack symbols.
 * Added support for css.tss, courtesy of @m1ga
