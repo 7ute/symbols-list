@@ -18,6 +18,7 @@ module.exports =
                     function: /^(?:final|abstract|private|protected|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                    hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
 
     source:
         css:
@@ -42,12 +43,14 @@ module.exports =
                 getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
                 todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                 fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
                 class: /^[\S\n]*class ([\w]+)/gmi
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         cs:
             regex:
                 class: /^[\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\s?class\s([\w]+(\s?:\s?[\w]*)?)/gmi
@@ -63,6 +66,7 @@ module.exports =
                 method: /^[^\S\n]*def +(.+? *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         ruby:
             regex:
                 attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
@@ -72,6 +76,7 @@ module.exports =
                 instancemethod: /^[ ]*def[ ]+(?!self\.)([^ \n\r]+)/gmi
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
@@ -86,3 +91,4 @@ module.exports =
                 subroutine: /^[ ]*sub[ ]+([^\d][^ (]+)(?:[ ]+\:[^ (]+)?(?:\(.*\))?[ ]*\{/gmi
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi

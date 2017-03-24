@@ -23,6 +23,8 @@ our @ArrayToUse = (
 
 # FIXME: A nasty workaround or bug, that needs to be fixed!
 
+# HACK: An even more nasty, quick and dirty code
+
 our $Test = 1;
 
 our $TestWithoutValue;
