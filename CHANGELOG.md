@@ -1,6 +1,6 @@
 ## dev
 * Improved regex strings for Ruby (Differ between class methods and instance methods).
-* Added todo and fixme symbols.
+* Added todo,fixme and hack symbols.
 * Added support for css.tss, courtesy of @m1ga
 * Added new config option to hide panel on empty list.
 * Added initial symbols reload to have the list on atom load.
