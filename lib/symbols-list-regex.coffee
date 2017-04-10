@@ -31,7 +31,7 @@ module.exports =
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
-                function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
+                function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|async|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
                 es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:async[\s\n]+)?(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
