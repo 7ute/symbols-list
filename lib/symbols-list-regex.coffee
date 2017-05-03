@@ -34,7 +34,7 @@ module.exports =
                 function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
-                es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:async[\s\n]+)?(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
+                es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:async|@\w+|static)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
                 es6constfunction: /^[\s]*(?:export[\s]+)?const[\s]+([\w]+)[\s]+=[\s]+\(.*\)[\s]+=>/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
