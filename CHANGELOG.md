@@ -1,5 +1,10 @@
 ## dev
 
+## 2.4.1 - Odin and ES2017 tweaks
+* Added Odin regex, courtesy of @FelixBrendel
+* Improved regex for ES2017, courtesy of @brigand
+* Added export keyword for JS functions, poke @DjLeChuck
+
 ## 2.4 - Lots of improvements!
 * Improved regex strings for Ruby (Differ between class methods and instance methods).
 * Added todo,fixme and hack symbols.
