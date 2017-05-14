@@ -92,3 +92,9 @@ module.exports =
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+        odin:
+            regex:
+                class:    /^[ ]*(.+)\s*:\s*:\s*struct\s*(?:[\{])/gmi             # struct
+                anchor:   /^[ ]*(.+)\s*:\s*:\s*enum\s*(?:[\{])/gmi               # enum
+                function: /^[ ]*(.+)\s*:\s*:\s*proc\s*(?:[\{\(])/gmi             # proc
+                methode_statique: /^[ ]*(.+)\s*:\s*:\s*(?:[\"\'0-9])/gmi         # const
