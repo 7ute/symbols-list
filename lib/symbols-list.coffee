@@ -16,6 +16,10 @@ module.exports =
             type: 'boolean'
             default: false
             description: 'Hide the list if empty'
+        panelWidth:
+            type: 'integer'
+            default: 200
+            description: 'Width of the symbol panel'
 
     SymbolsListView: null,
     panel: null,
@@ -51,6 +55,11 @@ module.exports =
 
         # reload symbols for the very first time
         SymbolsList.reloadSymbols()
+
+        # set width of panel
+        if atom.config.get('symbols-list.panelWidth')
+            newWidth = parseInt( atom.config.get('symbols-list.panelWidth') )
+            @SymbolsListView.element.style.width = newWidth + 'px'
 
     reloadSymbols: ->
 
