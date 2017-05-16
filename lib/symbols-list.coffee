@@ -21,7 +21,8 @@ module.exports =
     panel: null,
     subscriptions: null,
     editor: null,
-    code: null
+    code: null,
+    isVisible: null,
 
     init: (service) ->
 
@@ -31,6 +32,9 @@ module.exports =
         @SymbolsListView = new SymbolsListView(state.SymbolsListViewState)
         @SymbolsListView.callOnConfirm = @moveToRange;
         SymbolsList = this
+
+        # set initial visiblilty state
+        @isVisible = atom.config.get('symbols-list.startUp')
 
         # add event handlers
         @subscriptions = new CompositeDisposable
@@ -43,7 +47,7 @@ module.exports =
                 SymbolsList.updateActiveItem(e)
 
         # setup symbols list on right panel
-        @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: atom.config.get('symbols-list.startUp'), priority: 0)
+        @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: @isVisible, priority: 0)
 
         # reload symbols for the very first time
         SymbolsList.reloadSymbols()
@@ -58,6 +62,11 @@ module.exports =
         @editor = atom.workspace.getActiveTextEditor()
 
         SymbolsList = this
+
+        #only show panel if toggled to visible
+        if @isVisible is no
+            SymbolsList.panel.hide()
+            return
 
         # hide the list without an available text editor (i.e. in settings view)
         if not @editor? || not @editor.getGrammar()?
@@ -149,8 +158,10 @@ module.exports =
         SymbolsListViewState: @SymbolsListView.serialize()
 
     toggle: ->
-        if @panel.isVisible()
+        if @isVisible
             @panel.hide()
+            @isVisible = false
         else
             @panel.show()
+            @isVisible = true
             @reloadSymbols()
