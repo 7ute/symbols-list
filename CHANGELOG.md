@@ -1,4 +1,7 @@
 ## dev
+* Fixed: [Hiding (toggling) symbol list does not persist when switching tabs](https://github.com/7ute/symbols-list/issues/51), courtesy of @JK-TC
+* Moved configuration to separate file symbols-list-config
+* Added positioning feature and configs to either center the view after jump to line, scroll from top or from bottom for configured amount of lines.
 
 ## 2.4.1 - Odin and ES2017 tweaks
 * Added Odin regex, courtesy of @FelixBrendel
