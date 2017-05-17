@@ -1,28 +1,16 @@
+{CompositeDisposable} = require 'atom'
+Configuration = require './symbols-list-config'
 SymbolsListView = require './symbols-list-view'
 RegexList = require './symbols-list-regex'
-{CompositeDisposable} = require 'atom'
 
 module.exports =
-    config:
-        startUp:
-            type: 'boolean'
-            default: true
-            description: 'Set panel visibility at startup.'
-        alphabeticalSorting:
-            type: 'boolean'
-            default: false
-            description: 'Sort the list alphabetically'
-        hideOnEmptyList:
-            type: 'boolean'
-            default: false
-            description: 'Hide the list if empty'
-
+    config: Configuration,
     SymbolsListView: null,
     panel: null,
     subscriptions: null,
     editor: null,
     code: null,
-    isVisible: null,
+    isVisible: null
 
     init: (service) ->
 
@@ -34,7 +22,7 @@ module.exports =
         SymbolsList = this
 
         # set initial visiblilty state
-        @isVisible = atom.config.get('symbols-list.startUp')
+        @isVisible = atom.config.get('symbols-list.basic.startUp')
 
         # add event handlers
         @subscriptions = new CompositeDisposable
@@ -100,7 +88,7 @@ module.exports =
                 CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
                 SymbolsList.updateActiveItem(CursorBufferPosition)
             else
-                if atom.config.get('symbols-list.hideOnEmptyList')
+                if atom.config.get('symbols-list.basic.hideOnEmptyList')
                     SymbolsList.panel.hide()
                 else
                     SymbolsList.panel.show()
@@ -111,7 +99,7 @@ module.exports =
     updateActiveItem: (e) ->
 
         # TODO: currently no active item updates on alphabetical sorting
-        if atom.config.get('symbols-list.alphabeticalSorting')
+        if atom.config.get('symbols-list.basic.alphabeticalSorting')
             return
 
         if e.row?
