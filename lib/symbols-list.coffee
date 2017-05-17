@@ -119,6 +119,7 @@ module.exports =
             @SymbolsListView.selectItemView( @SymbolsListView.list.find('li').eq( key ) )
 
     recursiveScanRegex: ( scopeArray, regexGroup, start ) ->
+
             current = window.performance.now()
             recursive_time_limit = 500.0
             for key,val of regexGroup
@@ -133,9 +134,28 @@ module.exports =
                     @recursiveScanRegex( scopeArray.slice(1), val, start )
 
     moveToRange: (range) ->
-        @editor = atom.workspace.getActiveTextEditor()
-        @editor.setCursorBufferPosition(range.start)
-        @editor.scrollToCursorPosition({center: false})
+
+        PositionAfterJump = atom.config.get('symbols-list.positioning.positionAfterJump')
+
+        Editor = atom.workspace.getActiveTextEditor()
+        Editor.setCursorBufferPosition(range.start)
+
+        Cursor = Editor.getCursorScreenPosition()
+        View = atom.views.getView(Editor);
+        PixelPosition = View.pixelPositionForScreenPosition(Cursor).top
+
+        if PositionAfterJump == 'Center'
+            PixelPosition -= (Editor.getHeight() / 2);
+            Editor.setScrollTop PixelPosition
+        else
+            PositionScroll = atom.config.get('symbols-list.positioning.positionScroll')
+            LineHeight = Editor.getLineHeightInPixels()
+            if PositionAfterJump == 'ScrollFromTop'
+                PixelPosition -= (LineHeight * PositionScroll);
+                Editor.setScrollTop PixelPosition
+            else
+                PixelPosition += (LineHeight * PositionScroll);
+                Editor.setScrollBottom PixelPosition
 
     deactivate: ->
         @panel.destroy()
