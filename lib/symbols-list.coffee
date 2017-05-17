@@ -50,14 +50,14 @@ module.exports =
 
     reloadSymbols: ->
 
-        @editor = atom.workspace.getActiveTextEditor()
-
         SymbolsList = this
 
         #only show panel if toggled to visible
         if @isVisible is no
             SymbolsList.panel.hide()
             return
+
+        @editor = atom.workspace.getActiveTextEditor()
 
         # hide the list without an available text editor (i.e. in settings view)
         if not @editor? || not @editor.getGrammar()?
