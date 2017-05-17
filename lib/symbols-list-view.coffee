@@ -73,6 +73,12 @@ module.exports =
                     a.range?.start.row - b.range?.start.row
             @setItems(@items)
 
+        getItemList: ->
+            return @items
+
+        setItemList: (itemlist) ->
+            @setItems(itemlist)
+
         serialize: ->
 
         destroy: ->

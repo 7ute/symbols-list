@@ -2,6 +2,7 @@
 Configuration = require './symbols-list-config'
 SymbolsListView = require './symbols-list-view'
 RegexList = require './symbols-list-regex'
+Crypto = require 'crypto'
 
 module.exports =
     config: Configuration,
@@ -10,7 +11,9 @@ module.exports =
     subscriptions: null,
     editor: null,
     code: null,
-    isVisible: null
+    isVisible: null,
+    FileHashes: []
+    FileItemList: []
 
     init: (service) ->
 
@@ -47,11 +50,6 @@ module.exports =
 
     reloadSymbols: ->
 
-        # prepare symbols list view for reload
-        @SymbolsListView.cleanItems()
-        @SymbolsListView.setError()
-
-        # check if we face a text editor to reload the list for
         @editor = atom.workspace.getActiveTextEditor()
 
         SymbolsList = this
@@ -72,14 +70,32 @@ module.exports =
             SymbolsList.panel.hide()
             return
 
-        scopeArray = scopeName.split('.');
+        # check if we really need to reload the symbols list
+        CurrentFileHash = Crypto.createHash('md5').update(@editor.getText()).digest('hex')
+        CurrentFilePath = @editor.getPath()
 
-        # asynchronous loading
-        @SymbolsListView.setLoading('Loading…')
+        if not @FileHashes[CurrentFilePath]? || @FileHashes[CurrentFilePath] != CurrentFileHash
+
+            # prepare symbols list view for reload
+            @SymbolsListView.cleanItems()
+            @SymbolsListView.setError()
+
+            # asynchronous loading
+            @SymbolsListView.setLoading('Loading…')
 
         setTimeout(->
-            SymbolsList.SymbolsListView.cleanItems()
-            SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
+
+            if not SymbolsList.FileHashes[CurrentFilePath]? || SymbolsList.FileHashes[CurrentFilePath] != CurrentFileHash
+
+                scopeArray = scopeName.split('.')
+
+                SymbolsList.SymbolsListView.cleanItems()
+                SymbolsList.recursiveScanRegex(scopeArray, RegexList, window.performance.now() )
+
+                SymbolsList.FileHashes[CurrentFilePath] = CurrentFileHash
+                SymbolsList.FileItemList[CurrentFilePath] = SymbolsList.SymbolsListView.getItemList()
+            else
+                SymbolsList.SymbolsListView.setItemList(SymbolsList.FileItemList[CurrentFilePath])
 
             # check list for item count and hide it if needed
             if SymbolsList.SymbolsListView.items.length
