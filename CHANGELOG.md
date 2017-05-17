@@ -1,5 +1,6 @@
 ## dev
 * Fixed: [Hiding (toggling) symbol list does not persist when switching tabs](https://github.com/7ute/symbols-list/issues/51), courtesy of @JK-TC
+* Fixed: [Configurable width setting](https://github.com/7ute/symbols-list/issues/46), courtesy of @DjLeChuck
 * Moved configuration to separate file symbols-list-config
 * Added positioning feature and configs to either center the view after jump to line, scroll from top or from bottom for configured amount of lines.
 
