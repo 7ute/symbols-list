@@ -21,6 +21,12 @@ module.exports =
             type: "boolean"
             default: false
             description: "Hide the list if empty"
+        panelWidth:
+            order: 4
+            title: "Panel Width"
+            type: 'integer'
+            default: 200
+            description: 'Width of the symbols-list panel (in pixels)'
     positioning:
       order: 2
       type: "object"

@@ -40,6 +40,11 @@ module.exports =
         # reload symbols for the very first time
         SymbolsList.reloadSymbols()
 
+        # set width of panel
+        if atom.config.get('symbols-list.basic.panelWidth')
+            newWidth = parseInt( atom.config.get('symbols-list.basic.panelWidth') )
+            @SymbolsListView.element.style.width = newWidth + 'px'
+
     reloadSymbols: ->
 
         # prepare symbols list view for reload
