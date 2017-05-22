@@ -87,14 +87,14 @@
     font-size: 10px;
 }
 
-.symbols-list .list-item-todo,
 .symbols-list .list-item-commentaire,
 .symbols-list .list-item-commentaire_multi,
 .symbols-list .list-item-commentaire_html{ background: #888 }
-.symbols-list .list-item-todo::before,
 .symbols-list .list-item-commentaire::before,
 .symbols-list .list-item-commentaire_multi::before,
 .symbols-list .list-item-commentaire_html::before{ content: "/"; color: #DDD;}
+.symbols-list .list-item-todo{ background: #888 }
+.symbols-list .list-item-todo::before{ content: "T"; color: #DDD;}
 .symbols-list .list-item-fixme{ background: #dd0000 }
 .symbols-list .list-item-fixme::before{ content: "!"; color: #FFF;}
 .symbols-list .list-item-hack{ background: #7c0000 }
@@ -107,11 +107,15 @@
 .symbols-list .list-item-filter::before{ content: "f"; color: #FFF;}
 .symbols-list .list-item-classmethod,
 .symbols-list .list-item-method,
-.symbols-list .list-item-es6method{ background: #823da2 }
-.symbols-list .list-item-es6constfunction{ background: #823da2 }
+.symbols-list .list-item-es6_method, 
+.symbols-list .list-item-es6_async_method,
+.symbols-list .list-item-es6_static_method{ background: #823da2 }
+.symbols-list .list-item-es6_async_method::before{ content: "A"; color: #FFF;}
+.symbols-list .list-item-es6_static_method::before{ content: "S"; color: #FFF;}
+// .symbols-list .list-item-es6constfunction{ background: #823da2 }
 .symbols-list .list-item-classmethod::before,
-.symbols-list .list-item-method::before,
-.symbols-list .list-item-es6constfunction::before{ content: "M"; color: #FFF;}
+.symbols-list .list-item-method::before{ content: "M"; color: #FFF;}
+// .symbols-list .list-item-es6constfunction::before{ content: "M"; color: #FFF;}
 .symbols-list .list-item-instancemethod{ background: #b15edb }
 .symbols-list .list-item-instancemethod::before{ content: "I"; color: #FFF;}
 .symbols-list .list-item-methode_statique{ background: #823da2 }

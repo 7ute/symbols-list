@@ -34,16 +34,18 @@ module.exports =
                 function: /^[^\S\n]*(?:final|static|abstract|private|protected|public|async|export|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
-                es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:async[\s\n]+)?(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
-                es6constfunction: /^[\s]*(?:export[\s]+)?const[\s]+([\w]+)[\s]+=[\s]+\(.*\)[\s]+=>/gmi
+                es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
+                es6_async_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:async[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
+                es6_static_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:static[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\(.*\))[\s\n]*{/gmi
+                # es6constfunction: /^[\s]*(?:export[\s]+)?const[\s]+([\w]+)[\s]+=[\s]+\(.*\)[\s]+=>/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
                 setter: /^[ ]*set[ ]+([^ (]+\(.*\))/gmi
                 getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
-                todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
