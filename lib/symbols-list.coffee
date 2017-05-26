@@ -3,71 +3,110 @@ Configuration = require './symbols-list-config'
 SymbolsListView = require './symbols-list-view'
 RegexList = require './symbols-list-regex'
 Crypto = require 'crypto'
+SYMBOLS_LIST_URI = 'atom://symbols-list'
 
 module.exports =
     config: Configuration,
     SymbolsListView: null,
-    panel: null,
     subscriptions: null,
     editor: null,
-    code: null,
     isVisible: null,
     FileHashes: []
     FileItemList: []
 
-    init: (service) ->
+    initialize: (service) ->
 
     activate: (state) ->
 
         # prepare symbols list view object
         @SymbolsListView = new SymbolsListView(state.SymbolsListViewState)
         @SymbolsListView.callOnConfirm = @moveToRange;
-        SymbolsList = this
-
-        # set initial visiblilty state
-        @isVisible = atom.config.get('symbols-list.basic.startUp')
 
         # add event handlers
+        @handleEvents()
+
+        # set configured width of panel
+        # panelWidth = atom.config.get('symbols-list.basic.panelWidth')
+        # if panelWidth?
+        #     @SymbolsListView.element.style.width = parseInt(panelWidth) + 'px'
+
+        # set initial visiblilty state
+        if atom.config.get('symbols-list.basic.startUp')
+            @show()
+
+    handleEvents: ->
+
         @subscriptions = new CompositeDisposable
+
+        # register commands
         @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:toggle': => @toggle()
-        @subscriptions.add atom.workspace.onDidChangeActivePaneItem => @reloadSymbols()
+
+        # register opener for SymbolsListView objects
+        @subscriptions.add atom.workspace.addOpener (uri) =>
+            return @SymbolsListView if uri is SYMBOLS_LIST_URI
+
+        # register event listeners
+        SymbolsList = this
+        @subscriptions.add atom.workspace.getCenter().onDidChangeActivePaneItem => @reloadSymbols()
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidSave ->
                 SymbolsList.reloadSymbols()
             editor.onDidChangeCursorPosition (e) ->
                 SymbolsList.updateActiveItem(e)
 
-        # setup symbols list on right panel
-        @panel = atom.workspace.addRightPanel(item: @SymbolsListView.element, visible: @isVisible, priority: 0)
+    show: ->
 
-        # reload symbols for the very first time
-        SymbolsList.reloadSymbols()
+        if not @isVisible
+            console.log('show symbols-list')
+            atom.workspace.open(SYMBOLS_LIST_URI, {
+                searchAllPanes: true,
+            })
+            @isVisible = true
+            @reloadSymbols()
 
-        # set width of panel
-        if atom.config.get('symbols-list.basic.panelWidth')
-            newWidth = parseInt( atom.config.get('symbols-list.basic.panelWidth') )
-            @SymbolsListView.element.style.width = newWidth + 'px'
+    hide: ->
+
+        if @isVisible
+            console.log('hide symbols-list')
+            atom.workspace.hide(@SymbolsListView)
+            @isVisible = false
+
+    toggle: ->
+
+        if @isVisible
+            console.log('toggle to hide symbols-list')
+            @hide()
+        else
+            console.log('toggle to show symbols-list')
+            @show()
+
+    serialize: ->
+        SymbolsListViewState: @SymbolsListView.serialize()
+
+    deactivate: ->
+        @subscriptions.dispose()
+        @SymbolsListView.destroy()
 
     reloadSymbols: ->
 
         SymbolsList = this
 
-        #only show panel if toggled to visible
+        # only show panel if toggled to visible
         if @isVisible is no
-            SymbolsList.panel.hide()
+            @hide()
             return
 
-        @editor = atom.workspace.getActiveTextEditor()
+        @editor = atom.workspace.getCenter().getActiveTextEditor()
 
         # hide the list without an available text editor (i.e. in settings view)
         if not @editor? || not @editor.getGrammar()?
-            SymbolsList.panel.hide()
+            @hide()
             return
 
         scopeName = @editor.getGrammar().scopeName
 
         if not scopeName?
-            SymbolsList.panel.hide()
+            @hide()
             return
 
         # check if we really need to reload the symbols list
@@ -101,7 +140,7 @@ module.exports =
             if SymbolsList.SymbolsListView.items.length
 
                 # show panel, re-sort items and hide the loader afterwards
-                SymbolsList.panel.show()
+                SymbolsList.show() if not SymbolsList.isVisible
                 SymbolsList.SymbolsListView.sortItems()
                 SymbolsList.SymbolsListView.loadingArea.hide()
 
@@ -110,9 +149,9 @@ module.exports =
                 SymbolsList.updateActiveItem(CursorBufferPosition)
             else
                 if atom.config.get('symbols-list.basic.hideOnEmptyList')
-                    SymbolsList.panel.hide()
+                    # SymbolsList.hide()
                 else
-                    SymbolsList.panel.show()
+                    SymbolsList.show() if not SymbolsList.isVisible
                     SymbolsList.SymbolsListView.sortItems()
                     SymbolsList.SymbolsListView.loadingArea.hide()
         ,0)
@@ -120,8 +159,7 @@ module.exports =
     updateActiveItem: (e) ->
 
         # TODO: currently no active item updates on alphabetical sorting
-        if atom.config.get('symbols-list.basic.alphabeticalSorting')
-            return
+        return if atom.config.get('symbols-list.basic.alphabeticalSorting')
 
         if e.row?
             ActiveRow = e.row
@@ -158,7 +196,7 @@ module.exports =
 
         PositionAfterJump = atom.config.get('symbols-list.positioning.positionAfterJump')
 
-        Editor = atom.workspace.getActiveTextEditor()
+        Editor = atom.workspace.getCenter().getActiveTextEditor()
         Editor.setCursorBufferPosition(range.start)
 
         Cursor = Editor.getCursorScreenPosition()
@@ -177,20 +215,3 @@ module.exports =
             else
                 PixelPosition += (LineHeight * PositionScroll);
                 Editor.setScrollBottom PixelPosition
-
-    deactivate: ->
-        @panel.destroy()
-        @subscriptions.dispose()
-        @SymbolsListView.destroy()
-
-    serialize: ->
-        SymbolsListViewState: @SymbolsListView.serialize()
-
-    toggle: ->
-        if @isVisible
-            @panel.hide()
-            @isVisible = false
-        else
-            @panel.show()
-            @isVisible = true
-            @reloadSymbols()
