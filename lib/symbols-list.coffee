@@ -57,7 +57,6 @@ module.exports =
     show: ->
 
         if not @isVisible
-            console.log('show symbols-list')
             atom.workspace.open(SYMBOLS_LIST_URI, {
                 searchAllPanes: true,
             })
@@ -67,17 +66,14 @@ module.exports =
     hide: ->
 
         if @isVisible
-            console.log('hide symbols-list')
             atom.workspace.hide(@SymbolsListView)
             @isVisible = false
 
     toggle: ->
 
         if @isVisible
-            console.log('toggle to hide symbols-list')
             @hide()
         else
-            console.log('toggle to show symbols-list')
             @show()
 
     serialize: ->
@@ -149,7 +145,7 @@ module.exports =
                 SymbolsList.updateActiveItem(CursorBufferPosition)
             else
                 if atom.config.get('symbols-list.basic.hideOnEmptyList')
-                    # SymbolsList.hide()
+                    SymbolsList.hide()
                 else
                     SymbolsList.show() if not SymbolsList.isVisible
                     SymbolsList.SymbolsListView.sortItems()

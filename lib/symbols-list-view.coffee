@@ -43,7 +43,7 @@ module.exports =
             "</li>"
 
         confirmed: (item) ->
-            if item.object? and @callOnConfirm?
+            if item.objet? and @callOnConfirm?
                 @callOnConfirm( item.range )
 
         cleanItems: () ->
