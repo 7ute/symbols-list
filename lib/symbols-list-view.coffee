@@ -7,26 +7,6 @@ module.exports =
         callOnConfirm: null
         cancelling: true
 
-
-        # handleEvents: =>
-        #     @on 'mousedown', '.panel-resize-handle', (e) => @resizeStarted(e)
-        #
-        # resizeStarted: =>
-        #     document.addEventListener('mousemove', @resizeListView)
-        #     document.addEventListener('mouseup', @resizeStopped)
-        #
-        # resizeStopped: =>
-        #     document.removeEventListener('mousemove', @resizeListView)
-        #     document.removeEventListener('mouseup', @resizeStopped)
-        #
-        # resizeListView: ({pageX, which}) =>
-        #     totalWidth  = document.body.clientWidth
-        #     liste = document.querySelector(".symbols-list")
-        #     newWidth   = parseInt( totalWidth - pageX )
-        #     if ( newWidth >= 150 && newWidth < ( totalWidth / 2 ) )
-        #         liste.style.width = parseInt( totalWidth - pageX ) + 'px'
-
-
         initialize: ->
 
             super
@@ -35,7 +15,6 @@ module.exports =
             @setItems([])
 
             @filterEditorView.getModel().placeholderText = 'Start typing to filter...'
-            # @handleEvents()
 
         viewForItem: (item) ->
             "<li class='full-menu list-tree'>" +
@@ -61,7 +40,7 @@ module.exports =
             @setItems(@items)
 
         sortItems: () ->
-            if atom.config.get('symbols-list.alphabeticalSorting')
+            if atom.config.get('symbols-list.basic.alphabeticalSorting')
                 @items.sort (a, b) ->
                     a.label.localeCompare(b.label)
             else
@@ -76,7 +55,7 @@ module.exports =
         setItemList: (itemlist) ->
             @setItems(itemlist)
 
-        getTitle: -> "SymbolsList"
+        getTitle: -> atom.config.get('symbols-list.basic.title')
 
         getURI: -> 'atom://symbols-list'
 
