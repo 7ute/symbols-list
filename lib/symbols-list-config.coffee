@@ -26,7 +26,7 @@ module.exports =
             title: "Hide On Empty List"
             type: "boolean"
             default: false
-            description: "Hide the list if empty."
+            description: "Hide the list if empty (just works if symbols-list is the only item in the related panel)."
         panelWidth:
             order: 5
             title: "Panel Width"
