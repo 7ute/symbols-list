@@ -10,7 +10,7 @@ module.exports =
     SymbolsListView: null,
     subscriptions: null,
     editor: null,
-    isVisible: null,
+    isVisible: false,
     FileHashes: []
     FileItemList: []
 
@@ -20,19 +20,19 @@ module.exports =
 
         # prepare symbols list view object
         @SymbolsListView = new SymbolsListView(state.SymbolsListViewState)
-        @SymbolsListView.callOnConfirm = @moveToRange;
+        @SymbolsListView.callOnConfirm = @moveToRange
 
         # add event handlers
         @handleEvents()
 
         # set configured width of panel
-        # panelWidth = atom.config.get('symbols-list.basic.panelWidth')
-        # if panelWidth?
+        # if atom.config.get('symbols-list.basic.panelWidth')?
         #     @SymbolsListView.element.style.width = parseInt(panelWidth) + 'px'
 
         # set initial visiblilty state
         if atom.config.get('symbols-list.basic.startUp')
-            @show()
+            @toggle()
+            @reloadSymbols()
 
     handleEvents: ->
 
@@ -53,35 +53,37 @@ module.exports =
                 SymbolsList.reloadSymbols()
             editor.onDidChangeCursorPosition (e) ->
                 SymbolsList.updateActiveItem(e)
+        @subscriptions.add atom.workspace.observePaneItems (item) =>
+            if item instanceof SymbolsListView
+                atom.workspace.paneForURI(SYMBOLS_LIST_URI).onWillDestroyItem (event) =>
+                    if event.item instanceof SymbolsListView
+                        @isVisible = false
 
     show: ->
-
-        if not @isVisible
-            atom.workspace.open(SYMBOLS_LIST_URI, {
-                searchAllPanes: true,
-            })
-            @isVisible = true
-            @reloadSymbols()
+        atom.workspace.open(SYMBOLS_LIST_URI, {
+            searchAllPanes: true,
+        })
 
     hide: ->
 
-        SymbolsListPane = atom.workspace.paneForURI(SYMBOLS_LIST_URI)
-
         # Just hide the dock, if SymbolsList is the only item in the current pane
         # and/or if the related dock contains not more panes with items.
+        SymbolsListPane = atom.workspace.paneForURI(SYMBOLS_LIST_URI)
+        return if not SymbolsListPane?
         return if SymbolsListPane.items.length > 1
         return if SymbolsListPane.parent.element.children.length > 1
 
-        if @isVisible
-            atom.workspace.hide(@SymbolsListView)
-            @isVisible = false
+        atom.workspace.hide(@SymbolsListView)
 
     toggle: ->
 
-        if @isVisible
-            @hide()
-        else
+        if @isVisible is false
+            @isVisible = true
             @show()
+            @reloadSymbols()
+        else
+            @isVisible = false
+            @hide()
 
     serialize: ->
         SymbolsListViewState: @SymbolsListView.serialize()
@@ -95,7 +97,7 @@ module.exports =
         SymbolsList = this
 
         # only show panel if toggled to visible
-        if @isVisible is no
+        if @isVisible is false
             @hide()
             return
 
@@ -143,7 +145,7 @@ module.exports =
             if SymbolsList.SymbolsListView.items.length
 
                 # show panel, re-sort items and hide the loader afterwards
-                SymbolsList.show() if not SymbolsList.isVisible
+                SymbolsList.show()
                 SymbolsList.SymbolsListView.sortItems()
                 SymbolsList.SymbolsListView.loadingArea.hide()
 
@@ -154,7 +156,7 @@ module.exports =
                 if atom.config.get('symbols-list.basic.hideOnEmptyList')
                     SymbolsList.hide()
                 else
-                    SymbolsList.show() if not SymbolsList.isVisible
+                    SymbolsList.show()
                     SymbolsList.SymbolsListView.sortItems()
                     SymbolsList.SymbolsListView.loadingArea.hide()
         ,0)

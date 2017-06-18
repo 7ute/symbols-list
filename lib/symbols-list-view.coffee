@@ -28,6 +28,7 @@ module.exports =
 
 
         initialize: ->
+
             super
 
             @addClass('symbols-list')
@@ -66,6 +67,7 @@ module.exports =
             else
                 @items.sort (a, b) ->
                     a.range?.start.row - b.range?.start.row
+
             @setItems(@items)
 
         getItemList: ->
