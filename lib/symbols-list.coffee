@@ -65,6 +65,13 @@ module.exports =
 
     hide: ->
 
+        SymbolsListPane = atom.workspace.paneForURI(SYMBOLS_LIST_URI)
+
+        # Just hide the dock, if SymbolsList is the only item in the current pane
+        # and/or if the related dock contains not more panes with items.
+        return if SymbolsListPane.items.length > 1
+        return if SymbolsListPane.parent.element.children.length > 1
+
         if @isVisible
             atom.workspace.hide(@SymbolsListView)
             @isVisible = false
