@@ -16,8 +16,8 @@ module.exports =
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     methode_statique: /^(?:final|abstract|private|protected|public|[^\S\n])*static\sfunction\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     function: /^(?:final|abstract|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
-                    private_function: /^(?:private|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
-                    protected_function: /^(?:protected|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    private_function: /^private[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    protected_function: /^protected[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
@@ -34,8 +34,8 @@ module.exports =
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
                 class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|public|async|export|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
-                private_function: /^[^\S\n]*(?:private|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
-                protected_function: /^[^\S\n]*(?:protected|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
+                private_function: /^[^\S\n]*private[^\S\n]+function\s?([\w]+ *\([^\)]*\))/gmi
+                protected_function: /^[^\S\n]*protected[^\S\n]+function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
                 es6method: /^[^\S\n]*(?:[*][\s\n]+)?(?:async[\s\n]+)?(?!foreach|if|for|while|catch)([\w]+\s*\(.*\))[\s\n]*{/gmi
@@ -59,8 +59,8 @@ module.exports =
             regex:
                 class: /^[\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\s?class\s([\w]+(\s?:\s?[\w]*)?)/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|public)*\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
-                private_function: /^[^\S\n]*(?:private)*\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
-                protected_function: /^[^\S\n]*(?:protected)*\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
+                private_function: /^[^\S\n]*private\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
+                protected_function: /^[^\S\n]*protected\s?(?:\w+\s)+(\w+\s*\([^\)]*\))[\s\n]*{/gmi
         ini:
             regex:
                 structure: /^\[([^\]]+)]/gmi
