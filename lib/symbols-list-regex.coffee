@@ -16,8 +16,8 @@ module.exports =
                     class: /^[^\S\n]*class ([\w]+)/gmi
                     methode_statique: /^(?:final|abstract|private|protected|public|[^\S\n])*static\sfunction\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     function: /^(?:final|abstract|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
-                    private_function: /^private[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
-                    protected_function: /^protected[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    private_function: /^[^\S\n]*private[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
+                    protected_function: /^[^\S\n]*protected[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
