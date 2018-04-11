@@ -1,5 +1,8 @@
 ## dev
-* Nothing ATM! Come back later :)
+* Added SASS and SCSS regex
+* Added Twig regex
+* Added Blade regex
+* Improved regex matching
 
 ## 2.5.1 - No more warnings and exceptions
 * Fixed deprecation warnings.
