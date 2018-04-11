@@ -100,7 +100,11 @@
 .symbols-list .list-item-hack{ background: #7c0000 }
 .symbols-list .list-item-hack::before{ content: "!"; color: #FFF;}
 .symbols-list .list-item-function{ background: #3996e3 }
-.symbols-list .list-item-function::before{ content: "F"; color: #FFF;}
+.symbols-list .list-item-protected_function{ background: #e39339 }
+.symbols-list .list-item-private_function{ background: #e35139 }
+.symbols-list .list-item-function::before,
+    .symbols-list .list-item-protected_function::before,
+    .symbols-list .list-item-private_function::before{ content: "F"; color: #FFF;}
 .symbols-list .list-item-attr{ background: #3996e3 }
 .symbols-list .list-item-attr::before{ content: "A"; color: #FFF;}
 .symbols-list .list-item-filter{ background: #839595 }
