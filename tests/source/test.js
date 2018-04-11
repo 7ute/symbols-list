@@ -52,3 +52,5 @@ class SomeClass {
 
     }
 }
+
+jQuery('<input>').on('click', function(){});

@@ -41,10 +41,20 @@ module.exports =
             @filterEditorView.getModel().placeholderText = 'Start typing to filter...'
             @handleEvents()
 
+
+
+        escapeHtml: (unsafe) ->
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+
         viewForItem: (item) ->
             "<li class='full-menu list-tree'>" +
                 "<span class='pastille list-item-#{item.type}'></span>" +
-                "<span class='list-item'>#{item.label}</span>" +
+                "<span class='list-item'>" + @escapeHtml(item.label) + "</span>" +
             "</li>"
 
         confirmed: (item) ->
