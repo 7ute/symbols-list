@@ -25,6 +25,10 @@ module.exports =
                     regex:
                         commentaire: /^[^\S\n]*(?:{{--) ! ([^}]+) --}}(?:[\r\n])/gmi
                         blade_section: /^[^\S\n]*(?:@section\(['\s]*)([^'\(\)]+)/gmi
+            twig:
+                regex:
+                    commentaire: /^[^\S\n]*(?:{#) ! ([^}]+) #}(?:[\r\n])/gmi
+                    twig_block: /^[^\S\n]*(?:{% block ['\s]*)([^']+)[']?\s%}/gmi
 
     source:
         css:

@@ -1,0 +1,12 @@
+{{ include('dummy-view') }}
+
+{% block 'first-section' %}
+    <h1>{{ $some_var }}</h1>
+    <h1>Test</h1>
+{% endblock %}
+
+{% block 'second-section' %}
+
+    {# ! Comment #}
+    <script src="{{ asset('script.js') }}" charset="utf-8"></script>
+{% endblock
