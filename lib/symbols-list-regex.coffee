@@ -21,6 +21,10 @@ module.exports =
                     todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                     hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                blade:
+                    regex:
+                        commentaire: /^[^\S\n]*(?:{{--) ! ([^}]+) --}}(?:[\r\n])/gmi
+                        blade_section: /^[^\S\n]*(?:@section\(['\s]*)([^'\(\)]+)/gmi
 
     source:
         css:
