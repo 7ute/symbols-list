@@ -106,8 +106,9 @@ module.exports =
                 SymbolsList.SymbolsListView.loadingArea.hide()
 
                 # determine currently active line and update active item
-                CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
-                SymbolsList.updateActiveItem(CursorBufferPosition)
+                if SymbolsList.editor?
+                    CursorBufferPosition = SymbolsList.editor.getCursorBufferPosition()
+                    SymbolsList.updateActiveItem(CursorBufferPosition)
             else
                 if atom.config.get('symbols-list.basic.hideOnEmptyList')
                     SymbolsList.panel.hide()
@@ -166,17 +167,17 @@ module.exports =
         PixelPosition = View.pixelPositionForScreenPosition(Cursor).top
 
         if PositionAfterJump == 'Center'
-            PixelPosition -= (Editor.getHeight() / 2);
-            Editor.setScrollTop PixelPosition
+            PixelPosition -= (View.getHeight() / 2);
+            View.setScrollTop PixelPosition
         else
             PositionScroll = atom.config.get('symbols-list.positioning.positionScroll')
             LineHeight = Editor.getLineHeightInPixels()
             if PositionAfterJump == 'ScrollFromTop'
                 PixelPosition -= (LineHeight * PositionScroll);
-                Editor.setScrollTop PixelPosition
+                View.setScrollTop PixelPosition
             else
                 PixelPosition += (LineHeight * PositionScroll);
-                Editor.setScrollBottom PixelPosition
+                View.setScrollBottom PixelPosition
 
     deactivate: ->
         @panel.destroy()
