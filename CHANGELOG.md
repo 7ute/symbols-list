@@ -1,5 +1,6 @@
 ## dev
-* Nothing yet.
+* Fixed deprecation warnings.
+* Fixed uncaught exception errors (method call on undefined).
 
 ## 2.5.0 - Cascade of fixes
 * Fixed: [HTML artefact in symbol list](https://github.com/7ute/symbols-list/issues/57)
