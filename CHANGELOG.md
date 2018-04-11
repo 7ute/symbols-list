@@ -1,7 +1,7 @@
 ## dev
 * Nothing yet.
 
-## 2.4.2 - Cascade of fixes
+## 2.5.0 - Cascade of fixes
 * Fixed: [HTML artefact in symbol list](https://github.com/7ute/symbols-list/issues/57)
 * Added support for es7 decorators, courtesy of @guiguan
 * Fixed: [Different color for public, private and protected methods (visibility)](https://github.com/7ute/symbols-list/issues/54), courtesy of @monsieurluge
