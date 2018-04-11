@@ -1,4 +1,7 @@
 ## dev
+* Nothing ATM! Come back later :)
+
+## 2.5.1 - No more warnings and exceptions
 * Fixed deprecation warnings.
 * Fixed uncaught exception errors (method call on undefined).
 
