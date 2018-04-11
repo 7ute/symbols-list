@@ -31,8 +31,13 @@ module.exports =
                     twig_block: /^[^\S\n]*(?:{% block ['\s]*)([^']+)[']?\s%}/gmi
 
     source:
+        sass:
+            regex:
+                commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
+                commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
         css:
             regex:
+                commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
                 class: /^"([#|\.]*.+)"/gmi
         js:
