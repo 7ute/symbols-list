@@ -151,7 +151,9 @@ module.exports =
                         if not @editor? || current - start > recursive_time_limit
                             return;
                         @editor.scan regex, (obj) =>
-                            @SymbolsListView.addItem({ type:type, label: obj.match[1], objet: obj.match, range: obj.range })
+                            clean_matches = obj.match.slice(1).filter (item) -> typeof(item) isnt 'undefined'
+                            first_match = clean_matches[0] || ''
+                            @SymbolsListView.addItem({ type:type, label: first_match, objet: obj.match, range: obj.range })
                 else if key == scopeArray[0] && current - start < recursive_time_limit
                     @recursiveScanRegex( scopeArray.slice(1), val, start )
 
