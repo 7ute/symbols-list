@@ -2,7 +2,7 @@
 class Classe
 {
     public static function methode_statique(){ }
-    public function methode(){ }
+    private function methode(){ }
 }
 
 function &statique() {...}
