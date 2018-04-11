@@ -1,8 +1,26 @@
+{$} = require 'atom-space-pen-views'
 {CompositeDisposable} = require 'atom'
 Configuration = require './symbols-list-config'
 SymbolsListView = require './symbols-list-view'
-RegexList = require './symbols-list-regex'
 Crypto = require 'crypto'
+CSON = require 'cson'
+path = require 'path'
+
+# Previously : RegexList = require './symbols-list-regex'
+
+# Load System and User regex
+RegexListBase = CSON.load(path.join(__dirname, ".", "symbols-list-regex.cson"))
+RegexListExt = {}
+if (extensionsPath = atom.config.get('symbols-list.extensions.extensionsPath'))
+    if extensionsPath.indexOf("~#{path.sep}") is 0
+        if process.platform is 'win32'
+            homeDir = process.env.USERPROFILE
+        else
+            homeDir = process.env.HOME
+            extensionsPath = "#{homeDir}#{extensionsPath.substring(1)}"
+            try RegexListExt = CSON.load(extensionsPath) catch e then RegexListExt = {}
+
+RegexList = $.extend(true, {}, RegexListBase, RegexListExt)
 
 module.exports =
     config: Configuration,
@@ -148,6 +166,8 @@ module.exports =
                 if key == 'regex'
                     for type,regex of val
                         current = window.performance.now()
+                        if not regex
+                            continue
                         if not @editor? || current - start > recursive_time_limit
                             return;
                         @editor.scan regex, (obj) =>
