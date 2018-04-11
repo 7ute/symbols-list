@@ -26,6 +26,9 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * `Start Up` Set panel visibility at startup
 * `Alphabetical Sorting` Sorts the symbols alphabetically
 * `Hide On Empty List` Hide the list if empty
+* `Panel Width` Width of the symbols-list panel (in pixels)
+* `Position After Jump` Editor position after selecting symbols (Center, ScrollFromTop or ScrollFromBottom)
+* `Position Scroll` Additional line scrolling for fine tuning after position jump
 
 ## TO DO
 * Add the choice of active keyword per language in the settings
