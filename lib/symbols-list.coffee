@@ -30,6 +30,7 @@ module.exports =
         # add event handlers
         @subscriptions = new CompositeDisposable
         @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:toggle': => @toggle()
+        @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:focus': => @focus()
         @subscriptions.add atom.workspace.onDidChangeActivePaneItem => @reloadSymbols()
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidSave ->
@@ -197,3 +198,6 @@ module.exports =
             @panel.show()
             @isVisible = true
             @reloadSymbols()
+
+    focus: ->
+      @SymbolsListView.focusFilterEditor()
