@@ -200,4 +200,11 @@ module.exports =
             @reloadSymbols()
 
     focus: ->
-      @SymbolsListView.focusFilterEditor()
+      current_selection = atom.workspace.getActiveTextEditor().getSelectedText();
+
+      if(current_selection)
+          @SymbolsListView.filterEditorView.setText(current_selection);
+      else
+          @SymbolsListView.filterEditorView.model.selectAll();
+
+      @SymbolsListView.focusFilterEditor();
