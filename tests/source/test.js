@@ -11,6 +11,11 @@ function Function2( arg1, arg2 ) {
 
 }
 
+function Function2Multiline( arg1,
+  arg2 ) {
+
+}
+
 private function Function3() {
 
 }
@@ -36,6 +41,24 @@ $scope.method = function() {
 });
 
 class SomeClass {
+    async longfn(a,
+      b
+    ) {
+
+    }
+
+    static longfn2(a,
+      b
+    ) {
+
+    }
+
+    longfn3(a,
+      b
+    ) {
+
+    }
+
     set foo(value) {
 
     }
