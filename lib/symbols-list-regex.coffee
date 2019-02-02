@@ -62,6 +62,8 @@ module.exports =
                 todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                 fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
                 hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                mocha_describe: /describe\(['`"]([^'`"]+)['`"]\s?,\s?function\([^\)]*\)\s?{/gmi
+                mocha_it: /it\(\s*?['"`]([^'"`]*)['"`],\s*?.{0,50}?{/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
