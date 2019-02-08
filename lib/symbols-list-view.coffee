@@ -41,7 +41,9 @@ module.exports =
             @filterEditorView.getModel().placeholderText = 'Start typing to filter...'
             @handleEvents()
 
-
+            atom.commands.add @element, 'symbols-list:alt-confirm': (event) =>
+                @altConfirmed()
+                event.stopPropagation()
 
         escapeHtml: (unsafe) ->
             if (! unsafe)
@@ -62,6 +64,12 @@ module.exports =
         confirmed: (item) ->
             if item.objet? and @callOnConfirm?
                 @callOnConfirm( item.range )
+
+        altConfirmed: () ->
+            item = @getSelectedItem()
+
+            if item.objet? and @callOnConfirm?
+                @callOnConfirm( item.range, true )
 
         cleanItems: () ->
             @items = []
