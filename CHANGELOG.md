@@ -1,4 +1,9 @@
 ## dev
+* Nothing at the moment!
+
+## 2.5.2 - Multiline JS, SASS, Twig and Blade
+* Added additional key controls like focus, unfocus and selection, courtesy of @konradjurk
+* Added support of multiline method signatures in JS, courtesy of @konradjurk
 * Added SASS and SCSS regex
 * Added Twig regex
 * Added Blade regex
