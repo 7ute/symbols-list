@@ -1,4 +1,7 @@
 ## dev
+* Nothing at the moment!
+
+## 2.5.3 - LaTeX, Vue, and some fixes
 * Added LaTeX regex
 * Added support for inheritance in Ruby
 * Added SASS/SCSS mixins and functions
