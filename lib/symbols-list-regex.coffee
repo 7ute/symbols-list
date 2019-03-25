@@ -36,6 +36,13 @@ module.exports =
                     vue_template: /^[^\S\n]*<(?:(?:template)(?:(?:[^<]*)lang="([^"]+)")|(template))/gmi
                     vue_script: /^[^\S\n]*<(?:(?:script)(?:(?:[^<]*)lang="([^"]+)")|(script))/gmi
                     vue_style: /^[^\S\n]*<(?:(?:style)(?:(?:[^<]*)lang="([^"]+)")|(style))/gmi
+        tex:
+            latex:
+                regex:
+                    latex_chapter: /^\\chapter\*?\{([^\}]+)\}/gmi
+                    latex_section: /^\\section\*?\{([^\}]+)\}/gmi
+                    latex_subsection: /^\\subsection\*?\{([^\}]+)\}/gmi
+                    latex_subsubsection: /^\\subsubsection\*?\{([^\}]+)\}/gmi
 
     source:
         sass:

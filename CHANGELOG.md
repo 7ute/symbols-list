@@ -1,4 +1,5 @@
 ## dev
+* Added LaTeX regex
 * Added support for inheritance in Ruby
 * Added SASS/SCSS mixins and functions
 * Added Vue components regex

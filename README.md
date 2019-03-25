@@ -25,6 +25,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Twig ( text.html.twig )
 * SASS/SCSS ( source.sass, source.css.scss )
 * Vue components ( text.html.vue )
+* LaTeX ( text.tex.latex )
 
 ## Settings
 * `Start Up` Set panel visibility at startup
