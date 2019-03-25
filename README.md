@@ -21,6 +21,9 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Github Markdown ( source.gfm )
 * C# ( source.cs )
 * Perl ( source.pl, source.pm )
+* Blade ( text.html.php.blade )
+* Twig ( text.html.twig )
+* SASS/SCSS ( source.sass )
 
 ## Settings
 * `Start Up` Set panel visibility at startup
@@ -39,3 +42,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
   * typescript
   * template toolkit
   * …
+
+## Contributing
+To add support for your favorite language, or submit new features, feel free to do a pull request.
+For new languages, please include a test file in the `tests` directory.
