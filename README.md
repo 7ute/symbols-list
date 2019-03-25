@@ -24,6 +24,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Blade ( text.html.php.blade )
 * Twig ( text.html.twig )
 * SASS/SCSS ( source.sass )
+* Vue components ( text.html.vue )
 
 ## Settings
 * `Start Up` Set panel visibility at startup

@@ -29,6 +29,13 @@ module.exports =
                 regex:
                     commentaire: /^[^\S\n]*(?:{#) ! ([^}]+) #}(?:[\r\n])/gmi
                     twig_block: /^[^\S\n]*(?:{% block ['\s]*)([^']+)[']?\s%}/gmi
+            vue:
+                regex:
+                    commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
+                    commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
+                    vue_template: /^[^\S\n]*<(?:(?:template)(?:(?:[^<]*)lang="([^"]+)")|(template))/gmi
+                    vue_script: /^[^\S\n]*<(?:(?:script)(?:(?:[^<]*)lang="([^"]+)")|(script))/gmi
+                    vue_style: /^[^\S\n]*<(?:(?:style)(?:(?:[^<]*)lang="([^"]+)")|(style))/gmi
 
     source:
         sass:
