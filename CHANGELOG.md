@@ -1,5 +1,5 @@
 ## dev
-* Nothing at the moment!
+* Fixed [Alphabetical sorting doesn't work](https://github.com/7ute/symbols-list/issues/68)
 
 ## 2.5.2 - Multiline JS, SASS, Twig and Blade
 * Added additional key controls like focus, unfocus and selection, courtesy of @konradjurk
