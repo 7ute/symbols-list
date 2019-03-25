@@ -21,7 +21,7 @@ module.exports =
 
         # prepare symbols list view object
         @SymbolsListView = new SymbolsListView(state.SymbolsListViewState)
-        @SymbolsListView.callOnConfirm = @moveToRange;
+        @SymbolsListView.callOnConfirm = @moveToRange.bind @
         SymbolsList = this
 
         # set initial visiblilty state
@@ -30,6 +30,8 @@ module.exports =
         # add event handlers
         @subscriptions = new CompositeDisposable
         @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:toggle': => @toggle()
+        @subscriptions.add atom.commands.add 'atom-workspace', 'symbols-list:focus': => @focus()
+        @subscriptions.add atom.commands.add '.symbols-list', 'symbols-list:leave': => @leave()
         @subscriptions.add atom.workspace.onDidChangeActivePaneItem => @reloadSymbols()
         @subscriptions.add atom.workspace.observeTextEditors (editor) =>
             editor.onDidSave ->
@@ -157,7 +159,7 @@ module.exports =
                 else if key == scopeArray[0] && current - start < recursive_time_limit
                     @recursiveScanRegex( scopeArray.slice(1), val, start )
 
-    moveToRange: (range) ->
+    moveToRange: (range, altConfirmed = false) ->
 
         PositionAfterJump = atom.config.get('symbols-list.positioning.positionAfterJump')
 
@@ -181,6 +183,16 @@ module.exports =
                 PixelPosition += (LineHeight * PositionScroll);
                 View.setScrollBottom PixelPosition
 
+        # if selection was confirmed via symbols-list:alt-confirm (bound to shift+enter), empty the query
+        # text, leave and repaint selected item to reveal context
+        if altConfirmed
+            @SymbolsListView.filterEditorView.setText('')
+            @leave()
+
+            setTimeout(=>
+                @updateActiveItem(Editor.getCursorBufferPosition())
+            , 100)
+
     deactivate: ->
         @panel.destroy()
         @subscriptions.dispose()
@@ -197,3 +209,18 @@ module.exports =
             @panel.show()
             @isVisible = true
             @reloadSymbols()
+
+    focus: ->
+      @SymbolsListView.storeFocusedElement()
+
+      current_selection = atom.workspace.getActiveTextEditor()?.getSelectedText()
+
+      if(current_selection)
+          @SymbolsListView.filterEditorView.setText(current_selection);
+      else
+          @SymbolsListView.filterEditorView.model.selectAll();
+
+      @SymbolsListView.focusFilterEditor();
+
+    leave: ->
+      @SymbolsListView.restoreFocus()

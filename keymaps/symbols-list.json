@@ -4,5 +4,9 @@
   },
   ".platform-win32, .platform-linux": {
     "ctrl-alt-l": "symbols-list:toggle"
+  },
+  ".symbols-list atom-text-editor": {
+    "escape": "symbols-list:leave",
+    "shift-enter": "symbols-list:alt-confirm"
   }
 }
