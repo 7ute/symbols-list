@@ -103,8 +103,8 @@ module.exports =
         ruby:
             regex:
                 attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
-                class: /^[ ]*class[ ]+(?:.+?::)*([^ \n\r]+)/gmi
-                module: /^[ ]*module[ ]+([^ \n\r]+)/gmi
+                class: /^[ ]*class[ ]+(?:([^\s<]+)\s?<|(?:[^\s]+::)([^\r\n]+)|([^\s<]+))/gmi
+                module: /^[ ]*module[ ]+(?:([^\s<]+)\s?<|(?:[^\s]+::)([^\r\n]+)|([^\s<]+))/gmi
                 classmethod: /^[ ]*def[ ]+(?:self\.)([^ \n\r]+)/gmi
                 instancemethod: /^[ ]*def[ ]+(?!self\.)([^ \n\r]+)/gmi
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi

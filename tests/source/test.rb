@@ -27,6 +27,9 @@ end
 module TestModule::NestedTestModule
 end
 
+class InheritedClass < ParentClass::Entity
+end
+
 def test_method
 end
 
