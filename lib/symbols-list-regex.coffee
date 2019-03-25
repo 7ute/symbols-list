@@ -42,11 +42,17 @@ module.exports =
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
+                scss_mixin: /^[^\S\n]*(?:\=([^\(]+)\()/gmi
+                function: /^[^\S\n]*(?:@function\s+([^\(]+)\s*\()/gmi
         css:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)\*\//gmi
                 class: /^"([#|\.]*.+)"/gmi
+            scss:
+                regex:
+                    scss_mixin: /^[^\S\n]*(?:@mixin\s+([^\(]+)\s*\()/gmi
+                    function: /^[^\S\n]*(?:@function\s+([^\(]+)\s*\()/gmi
         js:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi

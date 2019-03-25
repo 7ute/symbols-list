@@ -23,7 +23,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Perl ( source.pl, source.pm )
 * Blade ( text.html.php.blade )
 * Twig ( text.html.twig )
-* SASS/SCSS ( source.sass )
+* SASS/SCSS ( source.sass, source.css.scss )
 * Vue components ( text.html.vue )
 
 ## Settings

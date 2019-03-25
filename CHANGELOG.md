@@ -1,4 +1,5 @@
 ## dev
+* Added SASS/SCSS mixins and functions
 * Added Vue components regex
 * Fixed [Alphabetical sorting doesn't work](https://github.com/7ute/symbols-list/issues/68)
 

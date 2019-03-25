@@ -1,2 +1,10 @@
 /* ! TEST */
 // ! TEST
+
+=SomeMixin()
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+@function my-function($path)
+  @return font-url($path, true)
