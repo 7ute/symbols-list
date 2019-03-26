@@ -77,3 +77,8 @@ class SomeClass {
 }
 
 jQuery('<input>').on('click', function(){});
+
+// TODO: A todo item
+// FIXME: a bug to fix
+// HACK: Some hack to make it work
+/* HACK: the closed version */ var = test;

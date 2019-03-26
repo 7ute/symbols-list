@@ -153,6 +153,9 @@ module.exports =
                         if not @editor? || current - start > recursive_time_limit
                             return;
                         @editor.scan regex, (obj) =>
+                            if not obj.match
+                                console.error('obj.match is null : probably some CRLF error')
+                                return false
                             clean_matches = obj.match.slice(1).filter (item) -> typeof(item) isnt 'undefined'
                             first_match = clean_matches[0] || ''
                             @SymbolsListView.addItem({ type:type, label: first_match, objet: obj.match, range: obj.range })

@@ -18,16 +18,16 @@ module.exports =
                     function: /^(?:final|abstract|public|[^\S\n])*function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     private_function: /^[^\S\n]*private[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
                     protected_function: /^[^\S\n]*protected[^\S\n]+function\s?((?:&\s?)?[\w]+ *\([^\)]*\))/gmi
-                    todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                    fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                    hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                    todo: /(?:\/\*|\/\/)[ ]*todo\:[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                    fixme: /(?:\/\*|\/\/)[ ]*fixme\:[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                    hack: /(?:\/\*|\/\/)[ ]*hack\:[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 blade:
                     regex:
-                        commentaire: /^[^\S\n]*(?:{{--) ! ([^}]+) --}}(?:[\r\n])/gmi
+                        commentaire: /^[^\S\n]*(?:{{--) ! ([^}]+) --}}(?:\r\n|\n)/gmi
                         blade_section: /^[^\S\n]*(?:@section\(['\s]*)([^'\(\)]+)/gmi
             twig:
                 regex:
-                    commentaire: /^[^\S\n]*(?:{#) ! ([^}]+) #}(?:[\r\n])/gmi
+                    commentaire: /^[^\S\n]*(?:{#) ! ([^}]+) #}(?:\r\n|\n)/gmi
                     twig_block: /^[^\S\n]*(?:{% block ['\s]*)([^']+)[']?\s%}/gmi
             vue:
                 regex:
@@ -71,7 +71,7 @@ module.exports =
                 protected_function: /^[^\S\n]*protected[^\S\n]+function\s?([\w]+ *\([^\)]*\))/gmi
                 controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
                 method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
-                es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\((?:(?!function|=>|;).|\n)*?\))\s{/gmi
+                es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\((?:(?!function|=>|;).|\r\n|\n)*?\))\s{/gmi
                 es6_async_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:async[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\((?:.|\s)*?\))[\s\n]*{/gmi
                 es6_static_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:static[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\((?:.|\s)*?\))[\s\n]*{/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
@@ -79,16 +79,16 @@ module.exports =
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
                 setter: /^[ ]*set[ ]+([^ (]+\(.*\))/gmi
                 getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
-                todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
-                hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/)?(?:[\r\n])/gmi
+                todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
                 class: /^[\S\n]*class ([\w]+)/gmi
-                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
         cs:
             regex:
                 class: /^[\S\n]*(?:final|static|abstract|private|protected|public|[^\S\n])*\s?class\s([\w]+(\s?:\s?[\w]*)?)/gmi
@@ -104,9 +104,9 @@ module.exports =
                 class: /^[^\S\n]*class[\W]+(.+?)(:| *\([\w\s.,]*\):)/gmi
                 function: /^[^\S\n]*def +(.+? *\((?!\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
                 method: /^[^\S\n]*def +(.+? *\((?=\s*self\s*(?=(,|\))))(.|\s)*?\)):/gmi
-                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
         ruby:
             regex:
                 attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
@@ -114,9 +114,9 @@ module.exports =
                 module: /^[ ]*module[ ]+(?:([^\s<]+)\s?<|(?:[^\s]+::)([^\r\n]+)|([^\s<]+))/gmi
                 classmethod: /^[ ]*def[ ]+(?:self\.)([^ \n\r]+)/gmi
                 instancemethod: /^[ ]*def[ ]+(?!self\.)([^ \n\r]+)/gmi
-                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
         gfm:
             regex:
                 structure: /^#+[^\S\n]+(.+)/gmi
@@ -129,9 +129,9 @@ module.exports =
                 use: /^[ ]*use[ ]+([^\d].+?);/gmi
                 our: /^[ ]*our[ ]+([^ \d]{2}[^\s\;\=]+)(?:[ ]*|=|;)/gmi
                 subroutine: /^[ ]*sub[ ]+([^\d][^ (]+)(?:[ ]+\:[^ (]+)?(?:\(.*\))?[ ]*\{/gmi
-                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
-                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
         odin:
             regex:
                 class:    /^[ ]*(.+)\s*:\s*:\s*struct\s*(?:[\{])/gmi             # struct
