@@ -1,6 +1,10 @@
 ## dev
 * Nothing at the moment!
 
+
+## 2.5.4 - CRLF files bugfix
+* Fixed [Uncaught TypeError: Cannot read property '1' of null](https://github.com/7ute/symbols-list/issues/66)
+
 ## 2.5.3 - LaTeX, Vue, and some fixes
 * Added LaTeX regex
 * Added support for inheritance in Ruby
