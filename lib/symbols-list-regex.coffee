@@ -65,8 +65,8 @@ module.exports =
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
                 commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
                 class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
-                class_expression: /[^\S\n]*([\w]+)\s*=\s*class\s*{/gmi
-                class_named_expression: /[^\S\n]*[\w]+\s*=\s*class ([\w]+)\s*{/gmi
+                class_expression: /[^\S\n]*([\w]+)\s*=\s*class(?: extends [\w]+)*\s*{/gmi
+                class_named_expression: /[^\S\n]*[\w]+\s*=\s*class ([\w]+)(?: extends [\w]+)*\s*{/gmi
                 function: /^[^\S\n]*(?:final|static|abstract|public|async|export|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
                 private_function: /^[^\S\n]*private[^\S\n]+function\s?([\w]+ *\([^\)]*\))/gmi
                 protected_function: /^[^\S\n]*protected[^\S\n]+function\s?([\w]+ *\([^\)]*\))/gmi
