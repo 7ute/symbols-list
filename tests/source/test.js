@@ -42,9 +42,10 @@ $scope.method = function() {
 
 var classExpression = class {};
 
-var classExpressionWithoutSpace = class{};
+var spacelessClassExpression = class{};
 
 class SomeClass {
+
     async longfn(a,
       b
     ) {
@@ -76,6 +77,10 @@ class SomeClass {
     }
 
     get bar() {
+
+    }
+
+    noSpaceAfterParams(a, b){
 
     }
 }
