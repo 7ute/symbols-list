@@ -40,6 +40,10 @@ $scope.method = function() {
 
 });
 
+var classExpression = class {};
+
+var classExpressionWithoutSpace = class{};
+
 class SomeClass {
     async longfn(a,
       b
