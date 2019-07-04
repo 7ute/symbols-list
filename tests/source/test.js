@@ -85,6 +85,8 @@ class SomeClass {
     }
 }
 
+module.exports = class Named {}
+
 jQuery('<input>').on('click', function(){});
 
 // TODO: A todo item
