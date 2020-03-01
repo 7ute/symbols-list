@@ -61,6 +61,9 @@ module.exports =
                 regex:
                     scss_mixin: /^[^\S\n]*(?:@mixin\s+([^\(]+)\s*\()/gmi
                     function: /^[^\S\n]*(?:@function\s+([^\(]+)\s*\()/gmi
+                    scss_tag_rule: /^([^\S\n]*[0-9a-zA-z-_]+)\s*{/gmi
+                    scss_class_rule: /^([^\S\n]*\.[0-9a-zA-z-_]+)\s*{/gmi
+                    scss_id_rule: /^([^\S\n]*#[0-9a-zA-z-_]+)\s*{/gmi
         js:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
