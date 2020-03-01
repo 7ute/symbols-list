@@ -142,3 +142,6 @@ module.exports =
                 anchor:   /^[ ]*(.+)\s*:\s*:\s*enum\s*(?:[\{])/gmi               # enum
                 function: /^[ ]*(.+)\s*:\s*:\s*proc\s*(?:[\{\(])/gmi             # proc
                 methode_statique: /^[ ]*(.+)\s*:\s*:\s*(?:[\"\'0-9])/gmi         # const
+        sql:
+            regex:
+                commentaire: /^[^\S\n]*--[^\S\n]*(.+)/gmi
