@@ -82,6 +82,8 @@ module.exports =
                 todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                mocha_describe: /describe\(['`"]([^'`"]+)['`"]\s?,\s?function\([^\)]*\)\s?{/gmi
+                mocha_it: /it\(\s*?['"`]([^'"`]*)['"`],\s*?.{0,50}?{/gmi
         ts:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
@@ -104,6 +106,8 @@ module.exports =
                 todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                mocha_describe: /describe\(['`"]([^'`"]+)['`"]\s?,\s?function\([^\)]*\)\s?{/gmi
+                mocha_it: /it\(\s*?['"`]([^'"`]*)['"`],\s*?.{0,50}?{/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi

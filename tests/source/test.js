@@ -82,3 +82,16 @@ jQuery('<input>').on('click', function(){});
 // FIXME: a bug to fix
 // HACK: Some hack to make it work
 /* HACK: the closed version */ var = test;
+
+describe('Our magnificent test', function() {
+	it('does something', function(done) {
+		// some random stuff
+        assert.equal('two', 2);
+		done();
+	});
+
+	it('does something else, with arrow fn', (done) => {
+		// some random stuff
+		done();
+	});
+});
