@@ -1,6 +1,8 @@
 ## dev
-* Nothing at the moment!
-
+* Added YAML regex (mainly for OpenApi)
+* Added basic TypeScript regex (copied from the JS section)
+* Fixed some spaces in JS regexes
+* Fixed the anchor regex in HTML
 
 ## 2.5.4 - CRLF files bugfix
 * Fixed [Uncaught TypeError: Cannot read property '1' of null](https://github.com/7ute/symbols-list/issues/66)
