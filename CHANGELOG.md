@@ -1,4 +1,5 @@
 ## dev
+* Added support for named expressions, courtesy of @GCSBOSS
 * Added support for SCSS tags and Twig macro, courtesy of @vukbgit
 * Added SQL regex, courtesy of @vukbgit
 * Added Mocha regex, courtesy of @konradjurk
