@@ -1,4 +1,6 @@
 ## dev
+* Added support for SCSS tags and Twig macro, courtesy of @vukbgit
+* Added SQL regex, courtesy of @vukbgit
 * Added Mocha regex, courtesy of @konradjurk
 * Added YAML regex (mainly for OpenApi)
 * Added basic TypeScript regex (copied from the JS section)
