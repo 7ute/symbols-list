@@ -74,6 +74,9 @@ class SomeClass {
     get bar() {
 
     }
+    
+    fieldStyleFunc = (val) => {}
+    another_fieldStyleFunc = (val, otherValue) => {}
 }
 
 module.exports = class Named {}

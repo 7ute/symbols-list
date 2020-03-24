@@ -79,6 +79,7 @@ module.exports =
                 es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\s?\((?:(?!function|=>|;).|\r\n|\n)*?\))\s{/gmi
                 es6_async_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:async[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
                 es6_static_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:static[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
+                es6_field_method: /^[^\S\n]*([\w]+[^\S\n]=[^\S\n]\([^\)]*\))[^\S\n]=>[^\S\n]*{/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
@@ -103,6 +104,7 @@ module.exports =
                 es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\s?\((?:(?!function|=>|;).|\r\n|\n)*?\))\s{/gmi
                 es6_async_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:async[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
                 es6_static_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:static[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
+                es6_field_method: /^[^\S\n]*([\w]+[^\S\n]=[^\S\n]\([^\)]*\))[^\S\n]=>[^\S\n]*{/gmi
                 constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
                 filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
                 structure: /^[^\S\n]*\.(config|run)\(function/gmi
