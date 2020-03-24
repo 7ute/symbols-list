@@ -135,6 +135,8 @@ module.exports =
                 ActiveRow = e.newBufferPosition.row
 
         for key,item of @SymbolsListView.items
+            if ! item.range
+                continue;
             if ActiveRow < item.range.start.row
                 continue;
             if (parseInt(key)+1) < @SymbolsListView.items.length && ActiveRow >= @SymbolsListView.items[parseInt(key)+1].range.start.row
