@@ -1,4 +1,7 @@
 ## dev
+Nothing for now
+
+## 2.6 - YAML, SQL, SCSS and Vue extended support
 * Added support for methods and properties in Vue monofile components
 * Added basic [support for ES6 class methods defined field-style with arrow notation](https://github.com/7ute/symbols-list/issues/74)
 * Added support for named expressions, courtesy of @GCSBOSS
