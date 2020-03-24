@@ -76,6 +76,10 @@ class SomeClass {
     }
 }
 
+module.exports = class Named {}
+var a = class NamedExt extends Other {}
+var ClassExt = class extends Other {}
+
 jQuery('<input>').on('click', function(){});
 
 // TODO: A todo item
