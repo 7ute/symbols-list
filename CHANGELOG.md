@@ -1,4 +1,5 @@
 ## dev
+* Added Mocha regex, courtesy of @konradjurk
 * Added YAML regex (mainly for OpenApi)
 * Added basic TypeScript regex (copied from the JS section)
 * Fixed some spaces in JS regexes
