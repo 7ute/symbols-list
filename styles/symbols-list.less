@@ -154,6 +154,8 @@
 .symbols-list .list-item-blade_section::before{ content: "@"; color: #000; font-size: 12px !important;}
 .symbols-list .list-item-twig_block{ background: #a27eae }
 .symbols-list .list-item-twig_block::before{ content: "%"; color: #000;}
+.symbols-list .list-item-twig_macro{ background: #00ff00 }
+.symbols-list .list-item-twig_macro::before{ content: "M"; color: #000;}
 .symbols-list .list-item-vue_template{ background: #673ab7 }
 .symbols-list .list-item-vue_template::before{ content: "<>"; color: #FFF; font-weight:normal; }
 .symbols-list .list-item-vue_script{ background: #9c27b0 }
@@ -162,6 +164,19 @@
 .symbols-list .list-item-vue_style::before{ content: "{ }"; color: #FFF; font-weight:normal; }
 .symbols-list .list-item-scss_mixin{ background: #8bc34a }
 .symbols-list .list-item-scss_mixin::before{ content: "m"; color: #1b5e20; font-size: 12px !important;}
+.symbols-list .list-item-scss_tag_rule{ background: #e06c75 }
+.symbols-list .list-item-scss_tag_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
+.symbols-list .list-item-scss_class_rule{ background: #d19a66 }
+.symbols-list .list-item-scss_class_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
+.symbols-list .list-item-scss_id_rule{ background: #61afef }
+.symbols-list .list-item-scss_id_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
+//preserve indentation for scss rules to show rules nesting
+.list-item-scss_tag_rule + .list-item,
+.list-item-scss_class_rule + .list-item,
+.list-item-scss_id_rule + .list-item
+{
+    white-space: pre-wrap;
+}
 
 
 .symbols-list .list-item-latex_chapter{ background: #9c27b0 }

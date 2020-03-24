@@ -29,6 +29,7 @@ module.exports =
                 regex:
                     commentaire: /^[^\S\n]*(?:{#) ! ([^}]+) #}(?:\r\n|\n)/gmi
                     twig_block: /^[^\S\n]*(?:{% block ['\s]*)([^']+)[']?\s%}/gmi
+                    twig_macro: /^[^\S\n]*(?:{% macro ['\s]*)([^']+)[']?\s%}/gmi
             vue:
                 regex:
                     commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
@@ -60,6 +61,9 @@ module.exports =
                 regex:
                     scss_mixin: /^[^\S\n]*(?:@mixin\s+([^\(]+)\s*\()/gmi
                     function: /^[^\S\n]*(?:@function\s+([^\(]+)\s*\()/gmi
+                    scss_tag_rule: /^([^\S\n]*[0-9a-zA-z-_]+)\s*{/gmi
+                    scss_class_rule: /^([^\S\n]*\.[0-9a-zA-z-_]+)\s*{/gmi
+                    scss_id_rule: /^([^\S\n]*#[0-9a-zA-z-_]+)\s*{/gmi
         js:
             regex:
                 commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
@@ -168,3 +172,6 @@ module.exports =
                 anchor:   /^[ ]*(.+)\s*:\s*:\s*enum\s*(?:[\{])/gmi               # enum
                 function: /^[ ]*(.+)\s*:\s*:\s*proc\s*(?:[\{\(])/gmi             # proc
                 methode_statique: /^[ ]*(.+)\s*:\s*:\s*(?:[\"\'0-9])/gmi         # const
+        sql:
+            regex:
+                commentaire: /^[^\S\n]*--[^\S\n]*(.+)/gmi
