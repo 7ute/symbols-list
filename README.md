@@ -14,7 +14,6 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * CSS ( source.css )
 * TSS ( source.css.tss )
 * JS/Mocha ( source.js )
-* TypeScript ( source.ts )
 * CoffeeScript ( source.coffee )
 * Python( source.python )
 * Ruby( source.ruby )
@@ -44,6 +43,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
   * java
   * swift
   * template toolkit
+  * typescript
   * …
 
 ## Contributing
