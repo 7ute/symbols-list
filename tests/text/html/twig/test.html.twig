@@ -10,3 +10,9 @@
     {# ! Comment #}
     <script src="{{ asset('script.js') }}" charset="utf-8"></script>
 {% endblock
+
+{% macro fancy_widget(fanciful_items) %}
+    <div class="someclass">
+        This is some textual content
+    </div>
+{% endmacro %}
