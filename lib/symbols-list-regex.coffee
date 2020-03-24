@@ -82,6 +82,28 @@ module.exports =
                 todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
                 hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+        ts:
+            regex:
+                commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
+                commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
+                class: /^[^\S\n]*class ([\w]+(?: extends [\w]+)*)/gmi
+                class_expression: /^[^\S\n]*([\w]+)\s*=\s*class\s{/gmi
+                function: /^[^\S\n]*(?:final|static|abstract|public|async|export|[^\S\n])*function\s?([\w]+ *\([^\)]*\))/gmi
+                private_function: /^[^\S\n]*private[^\S\n]+function\s?([\w]+\s?\([^\)]*\))/gmi
+                protected_function: /^[^\S\n]*protected[^\S\n]+function\s?([\w]+\s?\([^\)]*\))/gmi
+                controller: /^[^\S\n]*\.controller\s*\(\s*["']+([\w]+)["']+[\s,]*function/gmi
+                method: /^[^\S\n]*(?:.*)(\b\w+\b)\s*(?:=|:)\s*function/gmi
+                es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch)([\w]+\s?\((?:(?!function|=>|;).|\r\n|\n)*?\))\s{/gmi
+                es6_async_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:async[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
+                es6_static_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?:static[\s\n]+)(?!foreach|if|for|while|catch)([\w]+\s?\((?:.|\s)*?\))[\s\n]*{/gmi
+                constant: /^[^\S\n]*\.constant\(["']+([\w]+)["']+/gmi
+                filter: /^[^\S\n]*\.filter\(["']+([\w]+)["']+/gmi
+                structure: /^[^\S\n]*\.(config|run)\(function/gmi
+                setter: /^[ ]*set[ ]+([^ (]+\(.*\))/gmi
+                getter: /^[ ]*get[ ]+([^ (]+\(.*\))/gmi
+                todo: /(?:\/\*|\/\/)[ ]*todo\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                fixme: /(?:\/\*|\/\/)[ ]*fixme\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
+                hack: /(?:\/\*|\/\/)[ ]*hack\:?[ ]*(.+?)[ ]*(?:\*\/|\r\n|\n)/gmi
         coffee:
             regex:
                 function: /^[^\S\n]*([\w]+:)\s*(?:\([^\)]*\))?\s*->/gmi
