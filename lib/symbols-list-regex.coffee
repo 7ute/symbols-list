@@ -34,9 +34,13 @@ module.exports =
                 regex:
                     commentaire: /^[^\S\n]*\/\/ ! (.+)/gmi
                     commentaire_multi: /^[^\S\n]*\/\* ! (.+)[^\/]*\*\//gmi
-                    vue_template: /^[^\S\n]*<(?:(?:template)(?:(?:[^<]*)lang="([^"]+)")|(template))/gmi
-                    vue_script: /^[^\S\n]*<(?:(?:script)(?:(?:[^<]*)lang="([^"]+)")|(script))/gmi
-                    vue_style: /^[^\S\n]*<(?:(?:style)(?:(?:[^<]*)lang="([^"]+)")|(style))/gmi
+                    es6_method: /^[^\S\n]*(?:[*][\s\n]+)?(?:(?:@\w+)[\s\n]+)*(?!foreach|if|for|while|catch|default|handler|(?:data|propsData|render|renderError)|(?:components|props|computed|watch|methods|directives|filters|mixins|extends)|((?:before)?(?:creat|updat|(?:de)?activat|destroy|mount|errorCaptur)(?:e|ed)?))([\w]+\s?\((?:(?!function|=>|;).|\r\n|\n)*?\))\s{/gmi
+                    vue_template: /^<(?:(?:template)(?:(?:[^<]*)lang="([^"]+)")|(template))/gmi
+                    vue_script: /^<(?:(?:script)(?:(?:[^<]*)lang="([^"]+)")|(script))/gmi
+                    vue_properties: /^[^\S\n]*(components|props|computed|watch|methods|directives|filters|mixins|extends):[^\S\n]*{/gmi
+                    vue_hooks: /^[^\S\n]*((?:before)?(?:creat|updat|(?:de)?activat|destroy|mount|errorCaptur)(?:e|ed)?)[^\S\n]?\(\)[^\S\n]*{/gmi
+                    vue_prop_methods: /^[^\S\n]*((?:data|propsData|render|renderError)[^\S\n]?\([^\)]*\))[^\S\n]*{/gmi
+                    vue_style: /^<(?:(?:style)(?:(?:[^<]*)lang="([^"]+)")|(style))/gmi
         tex:
             latex:
                 regex:
