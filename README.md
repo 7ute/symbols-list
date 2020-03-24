@@ -13,7 +13,8 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * PHP ( text.html.php )
 * CSS ( source.css )
 * TSS ( source.css.tss )
-* JS ( source.js )
+* JS/Mocha ( source.js )
+* TypeScript ( source.ts )
 * CoffeeScript ( source.coffee )
 * Python( source.python )
 * Ruby( source.ruby )
@@ -26,6 +27,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * SASS/SCSS ( source.sass, source.css.scss )
 * Vue components ( text.html.vue )
 * LaTeX ( text.tex.latex )
+* SQL ( source.sql )
 
 ## Settings
 * `Start Up` Set panel visibility at startup
@@ -41,7 +43,6 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
   * shell
   * java
   * swift
-  * typescript
   * template toolkit
   * …
 
