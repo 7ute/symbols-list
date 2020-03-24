@@ -165,19 +165,14 @@
 .symbols-list .list-item-scss_mixin{ background: #8bc34a }
 .symbols-list .list-item-scss_mixin::before{ content: "m"; color: #1b5e20; font-size: 12px !important;}
 .symbols-list .list-item-scss_tag_rule{ background: #e06c75 }
-.symbols-list .list-item-scss_tag_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
+.symbols-list .list-item-scss_tag_rule::before{ content: "<>"; color: #530707; font-size: 8px !important;}
 .symbols-list .list-item-scss_class_rule{ background: #d19a66 }
-.symbols-list .list-item-scss_class_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
+.symbols-list .list-item-scss_class_rule::before{ content: "•"; color: #3e1b08; font-size: 12px !important;}
 .symbols-list .list-item-scss_id_rule{ background: #61afef }
 .symbols-list .list-item-scss_id_rule::before{ content: "R"; color: #1b5e20; font-size: 12px !important;}
-//preserve indentation for scss rules to show rules nesting
-.list-item-scss_tag_rule + .list-item,
-.list-item-scss_class_rule + .list-item,
-.list-item-scss_id_rule + .list-item
-{
-    white-space: pre-wrap;
-}
-
+.symbols-list .list-item-scss_tag_rule + .list-item,
+.symbols-list .list-item-scss_class_rule + .list-item,
+.symbols-list .list-item-scss_id_rule + .list-item{ white-space: pre-wrap; }
 
 .symbols-list .list-item-latex_chapter{ background: #9c27b0 }
 .symbols-list .list-item-latex_chapter::before{ content: "•"; color: #fff; font-size: 14px !important;}

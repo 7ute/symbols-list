@@ -1,6 +1,33 @@
 
+@import './other_sass_file';
+
 /* ! TEST */
 // ! TEST
+
+$red: #833;
+body {
+    color: $red;
+}
+
+.container {
+    @include SomeOtherMixin(15px, 'blue');
+    p {
+        color: blue;
+        hr {
+            color: blue;
+            .sub-container {
+                color: blue;
+                p { color: blue; }
+                abbr { color: blue; }
+                @extend .some-container;
+            }
+        }
+    }
+
+    &:hover {
+        color: red;
+    }
+}
 
 @mixin SomeMixin() {
 	display: block;
@@ -10,4 +37,15 @@
 
 @function my-function($path) {
     @return font-url($path, true);
+}
+
+@each $id, $image in $backgrounds {
+    .photo-#{$id} {
+        background: url($image);
+    }
+}
+
+@while $i > 0 {
+    .item-#{$i} { width: 2em * $i; }
+    $i: $i - 2;
 }
