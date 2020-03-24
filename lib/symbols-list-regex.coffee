@@ -123,6 +123,10 @@ module.exports =
         yaml:
             regex:
                 commentaire: /^[^\S\n]*# ! (.+)/gmi
+                tree_level_one: /^([^:\s\/#]+):/gm
+                tree_level_two: /^[^\S\n]{2}([^:\s\/#]+):/gm
+                # tree_level_three: /^[^\S\n]{4}([^:\s\/#]+):/gm            # Its a bit too much.
+                tree_path: /^[^\S\n]{2,4}(\/[^:\s]*):/gm
         perl:
             regex:
                 package: /^[ ]*package[ ]+([^\d][^ ]+)[ ]*(?:\{|;)/gmi

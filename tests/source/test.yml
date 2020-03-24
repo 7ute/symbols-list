@@ -1,0 +1,31 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://test.com'
+info:
+  title: YML OpenAPI test
+tags:
+  - name: Tag1
+  - name: Tag2
+paths:
+  /:
+    get:
+      operationId: getHome
+  /login:
+    post:
+      operationId: postLogin
+  /some/more/{path}:
+    put:
+      operationId: putSomePath
+    patch:
+      operationId: patchSomePath
+    delete:
+      operationId: deleteSomePath
+components:
+  securitySchemes:
+    Scheme1: ''
+    Scheme2: ''
+  parameters:
+    paramA: ''
+    paramB: ''
+  fields:
+security:
