@@ -1,4 +1,5 @@
 ## dev
+* Added basic [support for ES6 class methods defined field-style with arrow notation](https://github.com/7ute/symbols-list/issues/74)
 * Added support for named expressions, courtesy of @GCSBOSS
 * Added support for SCSS tags and Twig macro, courtesy of @vukbgit
 * Added SQL regex, courtesy of @vukbgit
