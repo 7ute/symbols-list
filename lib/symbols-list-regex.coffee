@@ -144,6 +144,17 @@ module.exports =
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
                 hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+        cpp:
+            regex:
+                class: /^[^\S\n]*class[\W]+(\w+)[\s{]/gmi
+                struct: /^[^\S\n]*struct[\W]+(\w+)[\s{]/gmi
+                enum: /^[^\S\n]*enum[\W]+(\w+)[\s{]/gmi
+                union: /^[^\S\n]*union[\W]+(\w+)[\s{]/gmi
+                function: /^[^\S\n]*(?:(?:\w+::)*\w+\s+)+(\w+)\s*\([^)]*\)\s*(?::{1}|[^;])[^{;]*[\s{]/gmi
+                method: /^[^\S\n]*(?:(?:\w+::)*\w+\s+)+(\w+::\w+)\s*\([^)]*\)\s*(?::{1}|[^;])[^{;]*[\s{]/gmi
+                todo: /\/\/[ ]*todo\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                fixme: /\/\/[ ]*fixme\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
+                hack: /\/\/[ ]*hack\:[ ]*(.+?)[ ]*(?:\r\n|\n)/gmi
         ruby:
             regex:
                 attr: /^[ ]*(?:attr_reader|attr_writer|attr_accessor)[ ]+([^ \n\r]+)/gmi
